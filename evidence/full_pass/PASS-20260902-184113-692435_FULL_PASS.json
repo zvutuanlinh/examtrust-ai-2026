@@ -1,0 +1,93 @@
+{
+  "pass_id": "PASS-20260902-184113-692435",
+  "timestamp": "2026-09-02T18:41:13+07:00",
+  "goal": "Close development session SESSION-20260902-184103 with session evidence",
+  "commit_message": "chore(session): close development session",
+  "parent_head": "f7cc2001a4710672a91934934a8114d487b6bd80",
+  "status": "FULL_PASS",
+  "gates": [
+    {
+      "gate": "SYNTAX",
+      "status": "PASS",
+      "checked_files": 14,
+      "errors": []
+    },
+    {
+      "gate": "UNIT_REGRESSION",
+      "status": "PASS",
+      "stdout": "DATA_RUN_CREATED\nRun ID: ETDATA-TEST-001\nPath: /tmp/tmpcyw9c2h9/evidence/ETDATA-TEST-001\nInput count: 1\nOutput count: 0\nManifest SHA256: 73489e01a272730057df4979b762509abcdc17bd3f5a7f1c1ae6b26c710a914a\nSHA256SUMS SHA256: 5ceeafaef7ee88a4555fa11346ed4212f34cb88483ee79e5996054d06a39faee\nDATA_RUN_CREATED\nRun ID: ETDATA-TEST-002\nPath: /tmp/tmpvw2y6na4/evidence/ETDATA-TEST-002\nInput count: 1\nOutput count: 0\nManifest SHA256: e3c25e39469433f49cf0692245e3ac554b103c54ca3cd8e24b5789cd49dcffd5\nSHA256SUMS SHA256: e514c2280ce009c020766d43d61c9a44b2a416c6c8c68071318e706400a12ec7\nPROMPT_RUN_CREATED\nRun ID: ETPROMPT-TEST-001\nPath: /tmp/tmpqho0xh_a/evidence/ETPROMPT-TEST-001\nContract: QC-TEST-001\nPrompt SHA256: 43f985d62940dc25c6fe72045242ce88cb3385a3b09c20a5cfd931b66ec51c17\nResponse SHA256: 39a28d910761d73ae8efc307a7366dcc8ec20e405a564223e794ca4e4a1bfb55\nSnapshot stored: True\nManifest SHA256: 76ab5dd4d1818660186889ed856868be702c301f80d836a2425de21db3717509\nSHA256SUMS SHA256: b875f0ad43ce538458e2996238f247ec1aeb8b692da206972c0abdbcb4ab1cf1\nPROMPT_RUN_CREATED\nRun ID: ETPROMPT-TEST-002\nPath: /tmp/tmpdohqpngq/evidence/ETPROMPT-TEST-002\nContract: QC-001\nPrompt SHA256: f16d05ec6b29248d2c61adb1e9263f78e4f7bace1b955014a2d17872cfe4064d\nResponse SHA256: None\nSnapshot stored: False\nManifest SHA256: b9acd4ae709d796c641570b1f51315e5031511fe3912491782cd46d54e442cfb\nSHA256SUMS SHA256: 57cc6055913ed1ac1be117ffd7d71a13abe016a570b96775e49dcf9bdca22aac\nSOURCE_REGISTERED\nSource ID: SRC-F16D05EC6B29248D\nSHA256: f16d05ec6b29248d2c61adb1e9263f78e4f7bace1b955014a2d17872cfe4064d\nRaw content copied: NO\nSource mutated: NO\nDATA_RUN_CREATED\nRun ID: ETDATA-TEST-BIND-003\nPath: /tmp/tmpbowc297y/data_runs/ETDATA-TEST-BIND-003\nInput count: 1\nOutput count: 0\nManifest SHA256: 82162615c9756268834418294f07d66218c5b84df49c8e9e72dd9b1cefffa148\nSHA256SUMS SHA256: f0c35532b49369ad8f7283c83764f249aedde87349fbecb0df75debab5fb0af4\nDATA_RUN_CREATED\nRun ID: ETDATA-TEST-BIND-002\nPath: /tmp/tmplz6lmozu/data_runs/ETDATA-TEST-BIND-002\nInput count: 1\nOutput count: 0\nManifest SHA256: 366c6c342cef87c6be7d4d039f01790bf4a504fa54d6342bcd8d24e9cfbf008c\nSHA256SUMS SHA256: 3f5eb3a5e27d565e7fd112c42a9b73967090d60545729139241711bbeba0ed99\nSOURCE_REGISTERED\nSource ID: SRC-C3841ACACE2CFAAB\nSHA256: c3841acace2cfaab7124198973212ea3d995c5592c91de654fc5543ef9ee768d\nRaw content copied: NO\nSource mutated: NO\nDATA_RUN_CREATED\nRun ID: ETDATA-TEST-BIND-001\nPath: /tmp/tmpvih9yy6a/data_runs/ETDATA-TEST-BIND-001\nInput count: 1\nOutput count: 0\nManifest SHA256: f99a93be142318edda00c0ccc0b86e7645a45621b4fba869ddbc26203130e6d7\nSHA256SUMS SHA256: 4bed3953d758581804fbd7ba276a1120d792ddde8a14efdd57ade3e74690c7f3\nPROVENANCE_BINDING_CREATED\nBinding ID: ETBIND-TEST-001\nSource ID: SRC-C3841ACACE2CFAAB\nData Run: ETDATA-TEST-BIND-001\nAsset ID: CH_001\nContract ID: QC-TEST-001\nPrompt Run: ETPROMPT-TEST-001\nQuestion ID: Q-TEST-001\nSOURCE_REGISTERED\nSource ID: SRC-559AEAD08264D579\nSHA256: 559aead08264d5795d3909718cdd05abd49572e84fe55590eef31a88a08fdffd\nRaw content copied: NO\nSource mutated: NO\nSOURCE_REGISTERED\nSource ID: SRC-DF7E70E5021544F4\nSHA256: df7e70e5021544f4834bbee64a9e3789febc4be81470df629cad6ddb03320a5c\nRaw content copied: NO\nSource mutated: NO\nSOURCE_REGISTERED\nSource ID: SRC-4343D14AF5D0DF58\nSHA256: 4343d14af5d0df58895df410237461f6f143112ba856709e1a497e6500e22a2c\nRaw content copied: NO\nSource mutated: NO\nSOURCE_ALREADY_REGISTERED\nSource ID: SRC-4343D14AF5D0DF58\nSOURCE_REGISTERED\nSource ID: SRC-A7DD97BC10922AE2\nSHA256: a7dd97bc10922ae22e523fd8af298c7e50c64c15643b9dee58475208c718fecf\nRaw content copied: NO\nSource mutated: NO",
+      "stderr": "test_autotrace_runtime_is_ignored (test_git_foundation.TestGitFoundation.test_autotrace_runtime_is_ignored) ... ok\ntest_sha256_detects_change (test_git_foundation.TestGitFoundation.test_sha256_detects_change) ... ok\ntest_sha256_is_stable (test_git_foundation.TestGitFoundation.test_sha256_is_stable) ... ok\ntest_data_logger_does_not_modify_source (test_lineage_foundation.TestLineageFoundation.test_data_logger_does_not_modify_source) ... ok\ntest_data_run_id_is_append_only (test_lineage_foundation.TestLineageFoundation.test_data_run_id_is_append_only) ... ok\ntest_prompt_hash_lineage (test_lineage_foundation.TestLineageFoundation.test_prompt_hash_lineage) ... ok\ntest_prompt_run_id_is_append_only (test_lineage_foundation.TestLineageFoundation.test_prompt_run_id_is_append_only) ... ok\ntest_sensitive_snapshot_is_blocked (test_lineage_foundation.TestLineageFoundation.test_sensitive_snapshot_is_blocked) ... ok\ntest_binding_rejects_invalid_anchor (test_source_provenance.TestSourceProvenance.test_binding_rejects_invalid_anchor) ... ok\ntest_binding_rejects_missing_source (test_source_provenance.TestSourceProvenance.test_binding_rejects_missing_source) ... ok\ntest_binding_requires_real_registered_source_and_data_run (test_source_provenance.TestSourceProvenance.test_binding_requires_real_registered_source_and_data_run) ... ok\ntest_changed_source_gets_different_identity (test_source_provenance.TestSourceProvenance.test_changed_source_gets_different_identity) ... ok\ntest_same_source_registration_is_idempotent (test_source_provenance.TestSourceProvenance.test_same_source_registration_is_idempotent) ... ok\ntest_source_registration_is_hash_bound (test_source_provenance.TestSourceProvenance.test_source_registration_is_hash_bound) ... ok\n\n----------------------------------------------------------------------\nRan 14 tests in 0.026s\n\nOK"
+    },
+    {
+      "gate": "ADVERSARIAL_SAFETY",
+      "status": "PASS",
+      "problems": []
+    },
+    {
+      "gate": "OPERATIONAL_ACCEPTANCE",
+      "status": "PASS",
+      "tools": [
+        {
+          "tool": "tools/autonote.py",
+          "status": "PASS"
+        },
+        {
+          "tool": "tools/safe_commit.py",
+          "status": "PASS"
+        },
+        {
+          "tool": "tools/session_logger.py",
+          "status": "PASS"
+        },
+        {
+          "tool": "tools/remote_logger.py",
+          "status": "PASS"
+        },
+        {
+          "tool": "tools/durable_evidence.py",
+          "status": "PASS"
+        },
+        {
+          "tool": "tools/full_pass.py",
+          "status": "PASS"
+        }
+      ]
+    },
+    {
+      "gate": "STAGED_SCOPE",
+      "status": "PASS",
+      "files": [
+        "NOTES.md",
+        "evidence/development_notes/DEV-20260902-184111.json",
+        "evidence/development_notes/DEV-20260902-184111.md",
+        "evidence/sessions/SESSION-20260902-184103.json"
+      ],
+      "problems": []
+    }
+  ],
+  "candidate_manifest": [
+    {
+      "path": "NOTES.md",
+      "sha256": "dd0c454bb14ed3bceea096cbc5934378b9031e91795dbf2854daf6b6f01024ea",
+      "size_bytes": 3857
+    },
+    {
+      "path": "evidence/development_notes/DEV-20260902-184111.json",
+      "sha256": "19201ca630f1d909fadc96055e2fcb2826e357457ffc147754294645255cd986",
+      "size_bytes": 540
+    },
+    {
+      "path": "evidence/development_notes/DEV-20260902-184111.md",
+      "sha256": "b068be961dabe0106927499d8d0171ae2ab63332d90a817a20a3680d667725fc",
+      "size_bytes": 551
+    },
+    {
+      "path": "evidence/sessions/SESSION-20260902-184103.json",
+      "sha256": "6a88b0df7a6bd7bceaf6418f6a778c69bf093eca92e698fe2dfaf8cd740f7fbe",
+      "size_bytes": 506
+    }
+  ],
+  "credential_persisted": false,
+  "force_push_authorized": false,
+  "record_sha256": "8d06eb928bb87463254e7a6d53b3abf32cdb5fb1f3160922b69dc0677e8618a4"
+}

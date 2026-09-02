@@ -1,0 +1,15 @@
+{
+  "session_id": "SESSION-20260902-184103",
+  "started_at": "2026-09-02T18:41:03+07:00",
+  "start_head": "8a1bce40edf6956f050054b2fa8a4c5914f48fe9",
+  "status": "CLOSED_BY_COMMIT",
+  "ended_at": "2026-09-02T18:41:10+07:00",
+  "pre_close_head": "f7cc2001a4710672a91934934a8114d487b6bd80",
+  "commits_before_close": [
+    {
+      "sha": "f7cc2001a4710672a91934934a8114d487b6bd80",
+      "message": "feat(provenance): add source registry and provenance binding"
+    }
+  ],
+  "closure_method": "safe_commit"
+}
