@@ -37,3 +37,6 @@ evidence/private/
 *.mp4
 *.mov
 *.avi
+
+# AutoTrace runtime state - never version controlled
+.autotrace/

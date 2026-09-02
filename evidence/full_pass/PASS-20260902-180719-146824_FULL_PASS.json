@@ -1,0 +1,99 @@
+{
+  "pass_id": "PASS-20260902-180719-146824",
+  "timestamp": "2026-09-02T18:07:19+07:00",
+  "goal": "Isolate AutoTrace runtime session state from Git before final foundation dry-run",
+  "commit_message": "fix(autotrace): isolate runtime session state from Git",
+  "parent_head": "9f370d09b638dcf6761f2c2259041f541a9773ea",
+  "status": "FULL_PASS",
+  "gates": [
+    {
+      "gate": "SYNTAX",
+      "status": "PASS",
+      "checked_files": 7,
+      "errors": []
+    },
+    {
+      "gate": "UNIT_REGRESSION",
+      "status": "PASS",
+      "stdout": "",
+      "stderr": "test_autotrace_runtime_is_ignored (test_git_foundation.TestGitFoundation.test_autotrace_runtime_is_ignored) ... ok\ntest_sha256_detects_change (test_git_foundation.TestGitFoundation.test_sha256_detects_change) ... ok\ntest_sha256_is_stable (test_git_foundation.TestGitFoundation.test_sha256_is_stable) ... ok\n\n----------------------------------------------------------------------\nRan 3 tests in 0.004s\n\nOK"
+    },
+    {
+      "gate": "ADVERSARIAL_SAFETY",
+      "status": "PASS",
+      "problems": []
+    },
+    {
+      "gate": "OPERATIONAL_ACCEPTANCE",
+      "status": "PASS",
+      "tools": [
+        {
+          "tool": "tools/autonote.py",
+          "status": "PASS"
+        },
+        {
+          "tool": "tools/safe_commit.py",
+          "status": "PASS"
+        },
+        {
+          "tool": "tools/session_logger.py",
+          "status": "PASS"
+        },
+        {
+          "tool": "tools/remote_logger.py",
+          "status": "PASS"
+        },
+        {
+          "tool": "tools/durable_evidence.py",
+          "status": "PASS"
+        },
+        {
+          "tool": "tools/full_pass.py",
+          "status": "PASS"
+        }
+      ]
+    },
+    {
+      "gate": "STAGED_SCOPE",
+      "status": "PASS",
+      "files": [
+        ".gitignore",
+        "NOTES.md",
+        "evidence/development_notes/DEV-20260902-180717.json",
+        "evidence/development_notes/DEV-20260902-180717.md",
+        "tests/test_git_foundation.py"
+      ],
+      "problems": []
+    }
+  ],
+  "candidate_manifest": [
+    {
+      "path": ".gitignore",
+      "sha256": "a32e7b281205870c1efffabc8c9d1c3eb2918634fdc07a2bafc44a4ce1ae70fa",
+      "size_bytes": 431
+    },
+    {
+      "path": "NOTES.md",
+      "sha256": "f7698594ba2419374ead469790f3fa13fe59df71857a7a1b97186f471b892134",
+      "size_bytes": 2998
+    },
+    {
+      "path": "evidence/development_notes/DEV-20260902-180717.json",
+      "sha256": "62ad59272252d49d450275428aa3ec8f04a5dd7f78b94ea2579eb360865acb1f",
+      "size_bytes": 561
+    },
+    {
+      "path": "evidence/development_notes/DEV-20260902-180717.md",
+      "sha256": "b25c22b7c47381f95c3acf60dde965bac56d2fd0581679a7de81a2668a421333",
+      "size_bytes": 567
+    },
+    {
+      "path": "tests/test_git_foundation.py",
+      "sha256": "784db3e51485f801bb934c01c162181da965c0fac99c2a6faf1d05cb3da54b67",
+      "size_bytes": 1220
+    }
+  ],
+  "credential_persisted": false,
+  "force_push_authorized": false,
+  "record_sha256": "d62c5a9be25e87553bea9cf333ebb03e0b994f0c339874b653052d7041e6c6c3"
+}

@@ -1,0 +1,16 @@
+{
+  "note_id": "DEV-20260902-180717",
+  "timestamp": "2026-09-02T18:07:17+07:00",
+  "goal": "Isolate AutoTrace runtime session state from Git before final foundation dry-run",
+  "git_head_before": "9f370d09b638dcf6761f2c2259041f541a9773ea",
+  "changed_files": [
+    "gitignore",
+    "tests/test_git_foundation.py"
+  ],
+  "status": "PRE_COMMIT",
+  "extra": {
+    "commit_message": "fix(autotrace): isolate runtime session state from Git",
+    "full_pass_required": true
+  },
+  "record_sha256": "3ada75b8a952bf683ae033099c4dea0495abb03b97b8d454ce93014b6c4e5a7e"
+}

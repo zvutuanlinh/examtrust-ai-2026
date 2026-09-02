@@ -41,5 +41,16 @@ class TestGitFoundation(unittest.TestCase):
             self.assertNotEqual(h1, h2)
 
 
+    def test_autotrace_runtime_is_ignored(self):
+        gitignore = Path(".gitignore").read_text(
+            encoding="utf-8"
+        )
+
+        self.assertIn(
+            ".autotrace/",
+            gitignore
+        )
+
+
 if __name__ == "__main__":
     unittest.main()

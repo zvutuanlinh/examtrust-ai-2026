@@ -30,6 +30,7 @@
 | 2026-09-02T18:00:57+07:00 | PRE_COMMIT | `DEV-20260902-180057` | Add append-only durable Google Drive checkpoints with Git state, manifest and SHA256 verification |
 | 2026-09-02T18:01:00+07:00 | PRE_COMMIT | `DEV-20260902-180100` | Preserve remote verification evidence for durable Drive checkpoint subsystem |
 | 2026-09-02T18:06:06+07:00 | PRE_COMMIT | `DEV-20260902-180606` | Enforce mandatory FULL PASS validation before every ExamTrust commit and bind push authorization to validated commit evidence |
+| 2026-09-02T18:07:17+07:00 | PRE_COMMIT | `DEV-20260902-180717` | Isolate AutoTrace runtime session state from Git before final foundation dry-run |
 
 ## Detailed evidence
 
