@@ -1,0 +1,36 @@
+{
+  "schema": "examtrust.notebook_lineage.git.v1",
+  "recorded_at": "2026-09-03T06:16:13+07:00",
+  "classification": "GIT_BACKED_NOTEBOOK_FINGERPRINT",
+  "source_drive_manifest": {
+    "path": "/content/drive/MyDrive/ExamTrust_AI_2026/NOTEBOOKS/MANIFESTS/NB-LINEAGE-20260903-060732.json",
+    "filename": "NB-LINEAGE-20260903-060732.json",
+    "sha256": "d938870089c2bdd646141a896797561c49092b71f93838f16eab411edbb5ece2"
+  },
+  "working_notebook": {
+    "path": "/content/drive/MyDrive/ExamTrust_AI_2026/NOTEBOOKS/WORKING/ExamTrust_Development_2026.ipynb",
+    "filename": "ExamTrust_Development_2026.ipynb",
+    "sha256": "7f3c7c23812846efbe9700b74baff406e2ffa5f4244dc16aab37ae4196f6ebb6",
+    "content_stored_in_git": false
+  },
+  "historical_source": {
+    "path": "/content/drive/MyDrive/Colab Notebooks/Untitled0.ipynb",
+    "filename": "Untitled0.ipynb",
+    "sha256": "7f3c7c23812846efbe9700b74baff406e2ffa5f4244dc16aab37ae4196f6ebb6",
+    "size_bytes": 589163,
+    "mtime_at_capture": "2026-09-03T06:06:42+07:00",
+    "preserved_in_place": true
+  },
+  "historical_snapshot": {
+    "path": "/content/drive/MyDrive/ExamTrust_AI_2026/NOTEBOOKS/HISTORY/ExamTrust_Historical_Untitled0_20260903-060732.ipynb",
+    "sha256": "7f3c7c23812846efbe9700b74baff406e2ffa5f4244dc16aab37ae4196f6ebb6",
+    "matches_source_snapshot": true
+  },
+  "git_baseline_before_registration": {
+    "head": "3ebe2ff93e04ee25f27d81241952be5f8d7a3e99",
+    "origin_main": "3ebe2ff93e04ee25f27d81241952be5f8d7a3e99",
+    "working_tree_clean": true,
+    "active_session": false
+  },
+  "statement": "This record registers the SHA256 fingerprint and lineage of the ExamTrust working notebook in Git. The .ipynb content itself remains outside Git. No historical execution, timestamp, commit, or evidence was reconstructed."
+}

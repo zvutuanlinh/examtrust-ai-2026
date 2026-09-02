@@ -1,0 +1,93 @@
+{
+  "pass_id": "PASS-20260903-061824-608822",
+  "timestamp": "2026-09-03T06:18:24+07:00",
+  "goal": "Register the SHA256 fingerprint and lineage of the ExamTrust professional working notebook as Git-backed evidence without storing the .ipynb content in Git.",
+  "commit_message": "feat(evidence): register notebook lineage fingerprint",
+  "parent_head": "3ebe2ff93e04ee25f27d81241952be5f8d7a3e99",
+  "status": "FULL_PASS",
+  "gates": [
+    {
+      "gate": "SYNTAX",
+      "status": "PASS",
+      "checked_files": 16,
+      "errors": []
+    },
+    {
+      "gate": "UNIT_REGRESSION",
+      "status": "PASS",
+      "stdout": "DATA_RUN_CREATED\nRun ID: ETDATA-TEST-001\nPath: /tmp/tmpzu6c_e6_/evidence/ETDATA-TEST-001\nInput count: 1\nOutput count: 0\nManifest SHA256: 908f61deaef877d055284b23989e5668cc0e40a0c95019fa92f269f0a43518d5\nSHA256SUMS SHA256: 8065b7e3c7791f81fe10c8ce178a25e481f3ed703c0731d29af2e790facf78a3\nDATA_RUN_CREATED\nRun ID: ETDATA-TEST-002\nPath: /tmp/tmpbrave_42/evidence/ETDATA-TEST-002\nInput count: 1\nOutput count: 0\nManifest SHA256: 4f76f961a70f345db163a1e15087f48173ed36ff2120b61c840cfe2df4663dd7\nSHA256SUMS SHA256: 23ef973b49dc669dd6885d07d4c5966f4fc531fc77cac02df8cf6d680730625e\nPROMPT_RUN_CREATED\nRun ID: ETPROMPT-TEST-001\nPath: /tmp/tmpx5p10tc8/evidence/ETPROMPT-TEST-001\nContract: QC-TEST-001\nPrompt SHA256: 43f985d62940dc25c6fe72045242ce88cb3385a3b09c20a5cfd931b66ec51c17\nResponse SHA256: 39a28d910761d73ae8efc307a7366dcc8ec20e405a564223e794ca4e4a1bfb55\nSnapshot stored: True\nManifest SHA256: 98ab93f6cac93993228ef9b83b56af4fa856dce325be62867a6f76cf5e9965d2\nSHA256SUMS SHA256: 5fc82f34546e493082bbc33394cc4da7824f881917546deb8f2ace937612037c\nPROMPT_RUN_CREATED\nRun ID: ETPROMPT-TEST-002\nPath: /tmp/tmphl68pziy/evidence/ETPROMPT-TEST-002\nContract: QC-001\nPrompt SHA256: f16d05ec6b29248d2c61adb1e9263f78e4f7bace1b955014a2d17872cfe4064d\nResponse SHA256: None\nSnapshot stored: False\nManifest SHA256: 2c8f8924a4f35c3f22f21038b70e376b27760f93201be0bbf91e7acefb9f9d55\nSHA256SUMS SHA256: 35e2c29cefa7b7f37b0ce9fe52c642210f73c39c8fe4fc5720fa45e728943484\nSOURCE_REGISTERED\nSource ID: SRC-F16D05EC6B29248D\nSHA256: f16d05ec6b29248d2c61adb1e9263f78e4f7bace1b955014a2d17872cfe4064d\nRaw content copied: NO\nSource mutated: NO\nDATA_RUN_CREATED\nRun ID: ETDATA-TEST-BIND-003\nPath: /tmp/tmpfyo22_nj/data_runs/ETDATA-TEST-BIND-003\nInput count: 1\nOutput count: 0\nManifest SHA256: a959c032d8c34972af20ff2648a1706bb062dd5a571fa42460110c2c87c2718e\nSHA256SUMS SHA256: 4410568b19f236a1f047b71021bf527fa7aeae0a7741fd9808bc611b1b45d9f6\nDATA_RUN_CREATED\nRun ID: ETDATA-TEST-BIND-002\nPath: /tmp/tmp5hatogqt/data_runs/ETDATA-TEST-BIND-002\nInput count: 1\nOutput count: 0\nManifest SHA256: ced0f2e039016c19a4232c2df716d5161ebbaf7ff4fad4a73c267aab160d2611\nSHA256SUMS SHA256: d3966610023958ab9df5fcf96f491b8e89957c946cc2a2aaa08dfc71cf59a634\nSOURCE_REGISTERED\nSource ID: SRC-C3841ACACE2CFAAB\nSHA256: c3841acace2cfaab7124198973212ea3d995c5592c91de654fc5543ef9ee768d\nRaw content copied: NO\nSource mutated: NO\nDATA_RUN_CREATED\nRun ID: ETDATA-TEST-BIND-001\nPath: /tmp/tmpj37fz2q2/data_runs/ETDATA-TEST-BIND-001\nInput count: 1\nOutput count: 0\nManifest SHA256: c366adc36a808d58866bcd8c6e917e96afa0abb72d53f55293f433a526a89b0f\nSHA256SUMS SHA256: e31ccef5d60b1ffc2747bab8c86fe635a2cff40444efbef2d24ab67966c66e94\nPROVENANCE_BINDING_CREATED\nBinding ID: ETBIND-TEST-001\nSource ID: SRC-C3841ACACE2CFAAB\nData Run: ETDATA-TEST-BIND-001\nAsset ID: CH_001\nContract ID: QC-TEST-001\nPrompt Run: ETPROMPT-TEST-001\nQuestion ID: Q-TEST-001\nSOURCE_REGISTERED\nSource ID: SRC-559AEAD08264D579\nSHA256: 559aead08264d5795d3909718cdd05abd49572e84fe55590eef31a88a08fdffd\nRaw content copied: NO\nSource mutated: NO\nSOURCE_REGISTERED\nSource ID: SRC-DF7E70E5021544F4\nSHA256: df7e70e5021544f4834bbee64a9e3789febc4be81470df629cad6ddb03320a5c\nRaw content copied: NO\nSource mutated: NO\nSOURCE_REGISTERED\nSource ID: SRC-4343D14AF5D0DF58\nSHA256: 4343d14af5d0df58895df410237461f6f143112ba856709e1a497e6500e22a2c\nRaw content copied: NO\nSource mutated: NO\nSOURCE_ALREADY_REGISTERED\nSource ID: SRC-4343D14AF5D0DF58\nSOURCE_REGISTERED\nSource ID: SRC-A7DD97BC10922AE2\nSHA256: a7dd97bc10922ae22e523fd8af298c7e50c64c15643b9dee58475208c718fecf\nRaw content copied: NO\nSource mutated: NO",
+      "stderr": "test_evidence_files_includes_full_pass (test_durable_evidence_coverage.TestDurableEvidenceCoverage.test_evidence_files_includes_full_pass) ... ok\ntest_autotrace_runtime_is_ignored (test_git_foundation.TestGitFoundation.test_autotrace_runtime_is_ignored) ... ok\ntest_sha256_detects_change (test_git_foundation.TestGitFoundation.test_sha256_detects_change) ... ok\ntest_sha256_is_stable (test_git_foundation.TestGitFoundation.test_sha256_is_stable) ... ok\ntest_data_logger_does_not_modify_source (test_lineage_foundation.TestLineageFoundation.test_data_logger_does_not_modify_source) ... ok\ntest_data_run_id_is_append_only (test_lineage_foundation.TestLineageFoundation.test_data_run_id_is_append_only) ... ok\ntest_prompt_hash_lineage (test_lineage_foundation.TestLineageFoundation.test_prompt_hash_lineage) ... ok\ntest_prompt_run_id_is_append_only (test_lineage_foundation.TestLineageFoundation.test_prompt_run_id_is_append_only) ... ok\ntest_sensitive_snapshot_is_blocked (test_lineage_foundation.TestLineageFoundation.test_sensitive_snapshot_is_blocked) ... ok\ntest_identity_gate_is_before_autonote_and_full_pass (test_safe_commit_identity.TestSafeCommitIdentity.test_identity_gate_is_before_autonote_and_full_pass) ... ok\ntest_identity_probe_does_not_use_run_git_check_keyword (test_safe_commit_identity.TestSafeCommitIdentity.test_identity_probe_does_not_use_run_git_check_keyword) ... ok\ntest_missing_local_identity_returns_nonzero_without_crash (test_safe_commit_identity.TestSafeCommitIdentity.test_missing_local_identity_returns_nonzero_without_crash) ... ok\ntest_binding_rejects_invalid_anchor (test_source_provenance.TestSourceProvenance.test_binding_rejects_invalid_anchor) ... ok\ntest_binding_rejects_missing_source (test_source_provenance.TestSourceProvenance.test_binding_rejects_missing_source) ... ok\ntest_binding_requires_real_registered_source_and_data_run (test_source_provenance.TestSourceProvenance.test_binding_requires_real_registered_source_and_data_run) ... ok\ntest_changed_source_gets_different_identity (test_source_provenance.TestSourceProvenance.test_changed_source_gets_different_identity) ... ok\ntest_same_source_registration_is_idempotent (test_source_provenance.TestSourceProvenance.test_same_source_registration_is_idempotent) ... ok\ntest_source_registration_is_hash_bound (test_source_provenance.TestSourceProvenance.test_source_registration_is_hash_bound) ... ok\n\n----------------------------------------------------------------------\nRan 18 tests in 0.070s\n\nOK"
+    },
+    {
+      "gate": "ADVERSARIAL_SAFETY",
+      "status": "PASS",
+      "problems": []
+    },
+    {
+      "gate": "OPERATIONAL_ACCEPTANCE",
+      "status": "PASS",
+      "tools": [
+        {
+          "tool": "tools/autonote.py",
+          "status": "PASS"
+        },
+        {
+          "tool": "tools/safe_commit.py",
+          "status": "PASS"
+        },
+        {
+          "tool": "tools/session_logger.py",
+          "status": "PASS"
+        },
+        {
+          "tool": "tools/remote_logger.py",
+          "status": "PASS"
+        },
+        {
+          "tool": "tools/durable_evidence.py",
+          "status": "PASS"
+        },
+        {
+          "tool": "tools/full_pass.py",
+          "status": "PASS"
+        }
+      ]
+    },
+    {
+      "gate": "STAGED_SCOPE",
+      "status": "PASS",
+      "files": [
+        "NOTES.md",
+        "evidence/development_notes/DEV-20260903-061819.json",
+        "evidence/development_notes/DEV-20260903-061819.md",
+        "evidence/notebook_lineage/NB-LINEAGE-20260903-060732.json"
+      ],
+      "problems": []
+    }
+  ],
+  "candidate_manifest": [
+    {
+      "path": "NOTES.md",
+      "sha256": "82862a07f5860d0d792913ecd9f0468f1b14a65acbb1beeea9ea6851b83e2cf4",
+      "size_bytes": 5155
+    },
+    {
+      "path": "evidence/development_notes/DEV-20260903-061819.json",
+      "sha256": "6efccc98d161f8b9cf23191bcfbaa1413f4a920b7768c2e0d6b110bddf627025",
+      "size_bytes": 648
+    },
+    {
+      "path": "evidence/development_notes/DEV-20260903-061819.md",
+      "sha256": "f81653705bfdee40108a3187641a64a5e2ed4a32cdff8ee820039a88dd5a1d53",
+      "size_bytes": 659
+    },
+    {
+      "path": "evidence/notebook_lineage/NB-LINEAGE-20260903-060732.json",
+      "sha256": "2feb24d52fa80ee2f2350265412609019f7c9ac76645315f2bfae40cf0eeef77",
+      "size_bytes": 1799
+    }
+  ],
+  "credential_persisted": false,
+  "force_push_authorized": false,
+  "record_sha256": "3337bb0b9b82ecb8b518e9b4c2359e5fbea99c970f1abdc5633ecf28b76ab138"
+}
