@@ -1,0 +1,16 @@
+{
+  "note_id": "DEV-20260902-175115",
+  "timestamp": "2026-09-02T17:51:15+07:00",
+  "goal": "Preserve remote verification evidence generated after AutoTrace upgrade",
+  "git_head_before": "63e9b305e6e87cae09f1b30146439f068907e066",
+  "changed_files": [
+    "evidence/remote_events/REMOTE-20260902-175115_PASS.json"
+  ],
+  "status": "PRE_COMMIT",
+  "extra": {
+    "safety": "PASS",
+    "syntax": "PASS",
+    "commit_message": "docs(git): preserve remote verification evidence"
+  },
+  "record_sha256": "babbcbdda4cfa2a99ec140d68c6c760ed3458a5c8334a2ffe2463f2515432d9e"
+}
