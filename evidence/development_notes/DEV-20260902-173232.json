@@ -1,0 +1,16 @@
+{
+  "note_id": "DEV-20260902-173232",
+  "timestamp": "2026-09-02T17:32:32+07:00",
+  "goal": "Record first GitHub push authentication failure before retry",
+  "git_head_before": "c81c40f9c9bffbf1a74495647786bd2faf664a4a",
+  "changed_files": [
+    "evidence/remote_events/REMOTE-20260902-173232_AUTH_FAILURE.json"
+  ],
+  "status": "PRE_COMMIT",
+  "extra": {
+    "safety": "PASS",
+    "syntax": "PASS",
+    "commit_message": "docs(git): record initial remote authentication failure"
+  },
+  "record_sha256": "baecbba3627a084ee3ccd60339c233be71ca7e0a802e276ababf2ccbe7bde1fe"
+}
