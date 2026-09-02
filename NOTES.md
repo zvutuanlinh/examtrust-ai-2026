@@ -26,6 +26,7 @@
 | 2026-09-02T17:51:15+07:00 | PRE_COMMIT | `DEV-20260902-175115` | Preserve remote verification evidence generated after AutoTrace upgrade |
 | 2026-09-02T17:59:28+07:00 | PRE_COMMIT | `DEV-20260902-175928` | Add readable GitHub development notes index while preserving canonical AutoTrace evidence |
 | 2026-09-02T17:59:32+07:00 | PRE_COMMIT | `DEV-20260902-175932` | Preserve remote verification evidence after adding automatic NOTES index |
+| 2026-09-02T18:00:57+07:00 | PRE_COMMIT | `DEV-20260902-180057` | Add append-only durable Google Drive checkpoints with Git state, manifest and SHA256 verification |
 
 ## Reading the evidence
 

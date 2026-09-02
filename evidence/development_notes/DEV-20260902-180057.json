@@ -1,0 +1,16 @@
+{
+  "note_id": "DEV-20260902-180057",
+  "timestamp": "2026-09-02T18:00:57+07:00",
+  "goal": "Add append-only durable Google Drive checkpoints with Git state, manifest and SHA256 verification",
+  "git_head_before": "5eaa762e4b72f0ebb0ae9562b35a0ffb58976306",
+  "changed_files": [
+    "tools/durable_evidence.py"
+  ],
+  "status": "PRE_COMMIT",
+  "extra": {
+    "safety": "PASS",
+    "syntax": "PASS",
+    "commit_message": "feat(autotrace): add durable Drive evidence checkpoints"
+  },
+  "record_sha256": "7f3280af9904c9808f2a2751456b852646b4ad7238911a7c35344a6958c5d05d"
+}
