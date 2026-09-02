@@ -8,7 +8,8 @@
 - No backdated history.
 - No fabricated commits, Prompt Logs, benchmark results or demo evidence.
 - Failed/aborted transactions are preserved rather than deleted.
-- `NOTES.md` is a readable index; JSON/Markdown files under `evidence/` are the detailed evidence.
+- Commit requires FULL PASS before execution.
+- Push requires a FULL PASS record bound to the commit.
 
 ## Development history
 
@@ -28,17 +29,11 @@
 | 2026-09-02T17:59:32+07:00 | PRE_COMMIT | `DEV-20260902-175932` | Preserve remote verification evidence after adding automatic NOTES index |
 | 2026-09-02T18:00:57+07:00 | PRE_COMMIT | `DEV-20260902-180057` | Add append-only durable Google Drive checkpoints with Git state, manifest and SHA256 verification |
 | 2026-09-02T18:01:00+07:00 | PRE_COMMIT | `DEV-20260902-180100` | Preserve remote verification evidence for durable Drive checkpoint subsystem |
+| 2026-09-02T18:06:06+07:00 | PRE_COMMIT | `DEV-20260902-180606` | Enforce mandatory FULL PASS validation before every ExamTrust commit and bind push authorization to validated commit evidence |
 
-## Reading the evidence
-
-Detailed development evidence:
+## Detailed evidence
 
 ```text
 evidence/development_notes/
-```
-
-Remote publication evidence:
-
-```text
-evidence/remote_events/
+evidence/full_pass/
 ```

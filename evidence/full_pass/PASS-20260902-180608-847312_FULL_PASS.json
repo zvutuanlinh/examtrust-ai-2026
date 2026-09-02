@@ -1,0 +1,111 @@
+{
+  "pass_id": "PASS-20260902-180608-847312",
+  "timestamp": "2026-09-02T18:06:08+07:00",
+  "goal": "Enforce mandatory FULL PASS validation before every ExamTrust commit and bind push authorization to validated commit evidence",
+  "commit_message": "feat(autotrace): enforce full pass commit and push gates",
+  "parent_head": "25736cf007b9a664b17dbc2054001e4c2bbced38",
+  "status": "FULL_PASS",
+  "gates": [
+    {
+      "gate": "SYNTAX",
+      "status": "PASS",
+      "checked_files": 7,
+      "errors": []
+    },
+    {
+      "gate": "UNIT_REGRESSION",
+      "status": "PASS",
+      "stdout": "",
+      "stderr": "test_sha256_detects_change (test_git_foundation.TestGitFoundation.test_sha256_detects_change) ... ok\ntest_sha256_is_stable (test_git_foundation.TestGitFoundation.test_sha256_is_stable) ... ok\n\n----------------------------------------------------------------------\nRan 2 tests in 0.002s\n\nOK"
+    },
+    {
+      "gate": "ADVERSARIAL_SAFETY",
+      "status": "PASS",
+      "problems": []
+    },
+    {
+      "gate": "OPERATIONAL_ACCEPTANCE",
+      "status": "PASS",
+      "tools": [
+        {
+          "tool": "tools/autonote.py",
+          "status": "PASS"
+        },
+        {
+          "tool": "tools/safe_commit.py",
+          "status": "PASS"
+        },
+        {
+          "tool": "tools/session_logger.py",
+          "status": "PASS"
+        },
+        {
+          "tool": "tools/remote_logger.py",
+          "status": "PASS"
+        },
+        {
+          "tool": "tools/durable_evidence.py",
+          "status": "PASS"
+        },
+        {
+          "tool": "tools/full_pass.py",
+          "status": "PASS"
+        }
+      ]
+    },
+    {
+      "gate": "STAGED_SCOPE",
+      "status": "PASS",
+      "files": [
+        "NOTES.md",
+        "evidence/development_notes/DEV-20260902-180606.json",
+        "evidence/development_notes/DEV-20260902-180606.md",
+        "tests/test_git_foundation.py",
+        "tools/full_pass.py",
+        "tools/remote_logger.py",
+        "tools/safe_commit.py"
+      ],
+      "problems": []
+    }
+  ],
+  "candidate_manifest": [
+    {
+      "path": "NOTES.md",
+      "sha256": "9a3bf6f460c997959dbedaa09cc3c997f29bfee2a4301ce8b44033859c065b08",
+      "size_bytes": 2848
+    },
+    {
+      "path": "evidence/development_notes/DEV-20260902-180606.json",
+      "sha256": "0aaaa5c44fa89aac6e4b0d01f9f0424d8a93c4a26a279e22ab49e07faf6c6da9",
+      "size_bytes": 674
+    },
+    {
+      "path": "evidence/development_notes/DEV-20260902-180606.md",
+      "sha256": "68fb0289d814a218b6650b931514b40771cfcdfbb7eeb72690bd81550341e56c",
+      "size_bytes": 670
+    },
+    {
+      "path": "tests/test_git_foundation.py",
+      "sha256": "9ded22758e0e1f62eb0b9284a7b1dcfadcb44f01e2dd614a2351fffdb1dece95",
+      "size_bytes": 997
+    },
+    {
+      "path": "tools/full_pass.py",
+      "sha256": "58f507d1ea28811cad44323e828df0335461935c562851275cb4d8bc4b718cf8",
+      "size_bytes": 11433
+    },
+    {
+      "path": "tools/remote_logger.py",
+      "sha256": "4e71fa80846c36493c3230d0b33a7d32f74b1f9bcdf37868a6ddb25b60fa654f",
+      "size_bytes": 5285
+    },
+    {
+      "path": "tools/safe_commit.py",
+      "sha256": "8f711376b71652df73867b41b2d4bcceb6ae97dad7e9c9e73953ea8aa8a05e2a",
+      "size_bytes": 7546
+    }
+  ],
+  "credential_persisted": false,
+  "force_push_authorized": false,
+  "record_sha256": "25099d5918636c495d0a8d049898faf2c78bd4db78c92f2a193114dbd638014e"
+}

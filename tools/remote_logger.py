@@ -10,6 +10,20 @@ ROOT = Path(__file__).resolve().parents[1]
 
 sys.path.insert(0, str(ROOT))
 
+from tools.full_pass import verify_head_full_pass
+
+DRIVE_REMOTE = Path(
+    "/content/drive/MyDrive/"
+    "ExamTrust_AI_2026/"
+    "EVIDENCE/AUTOTRACE/"
+    "remote_events"
+)
+
+DRIVE_REMOTE.mkdir(
+    parents=True,
+    exist_ok=True
+)
+
 
 def now():
     return datetime.now(
@@ -19,7 +33,7 @@ def now():
 
 def run_git(args, timeout=120):
     try:
-        process = subprocess.run(
+        p = subprocess.run(
             ["git"] + args,
             cwd=ROOT,
             text=True,
@@ -27,154 +41,130 @@ def run_git(args, timeout=120):
             stderr=subprocess.PIPE,
             timeout=timeout
         )
+
     except subprocess.TimeoutExpired:
         return {
             "status": "TIMEOUT",
-            "returncode": None,
             "stdout": "",
-            "stderr": "Git operation timed out."
+            "stderr": "Git timeout"
         }
 
     return {
         "status": (
             "SUCCESS"
-            if process.returncode == 0
+            if p.returncode == 0
             else "COMMAND_FAILURE"
         ),
-        "returncode": process.returncode,
-        "stdout": process.stdout.strip(),
-        "stderr": process.stderr.strip()
+        "stdout": p.stdout.strip(),
+        "stderr": p.stderr.strip()
     }
 
 
 def git_value(args):
-    result = run_git(args)
+    r = run_git(args)
 
-    if result["status"] != "SUCCESS":
+    if r["status"] != "SUCCESS":
         raise RuntimeError(
-            result["stderr"]
+            r["stderr"]
         )
 
-    return result["stdout"]
+    return r["stdout"]
 
 
-def create_remote_event(
-    operation,
+def durable_event(
     status,
-    local_head=None,
-    remote_head=None,
     detail=None
 ):
     ts = now()
 
-    event_id = ts.strftime(
-        "REMOTE-%Y%m%d-%H%M%S"
+    local_head = git_value(
+        ["rev-parse", "HEAD"]
     )
 
-    record = {
+    remote_head = None
+
+    try:
+        remote_head = git_value(
+            ["rev-parse", "origin/main"]
+        )
+    except Exception:
+        pass
+
+    event_id = ts.strftime(
+        "REMOTE-%Y%m%d-%H%M%S-%f"
+    )
+
+    rec = {
         "event_id": event_id,
         "timestamp": ts.isoformat(
             timespec="seconds"
         ),
-        "operation": operation,
+        "operation": "GIT_PUSH_REMOTE_VERIFY",
         "status": status,
         "local_head": local_head,
         "remote_head": remote_head,
-        "remote": (
-            git_value(
-                ["remote", "get-url", "origin"]
-            )
-            if local_head
-            else None
-        ),
         "force_push": False,
         "credential_persisted_in_evidence": False,
         "detail": detail or {}
     }
 
-    output_dir = (
-        ROOT
-        / "evidence"
-        / "remote_events"
-    )
-
-    output_dir.mkdir(
-        parents=True,
-        exist_ok=True
-    )
-
-    output_path = (
-        output_dir
+    out = (
+        DRIVE_REMOTE
         / f"{event_id}_{status}.json"
     )
 
-    output_path.write_text(
+    out.write_text(
         json.dumps(
-            record,
+            rec,
             ensure_ascii=False,
             indent=2
         ),
         encoding="utf-8"
     )
 
-    print("REMOTE_EVENT:", output_path)
-
-    return output_path
+    print(
+        "DURABLE_REMOTE_EVENT:",
+        out
+    )
 
 
 def push_and_verify():
-    local_before = git_value(
-        ["rev-parse", "HEAD"]
+    status = git_value(
+        ["status", "--porcelain"]
     )
 
-    push = run_git(
-        ["push", "origin", "main"]
-    )
+    if status.strip():
+        print(
+            "PUSH BLOCKED: working tree not clean"
+        )
+        return 20
 
-    if push["status"] != "SUCCESS":
-        status = "PUSH_PENDING"
-
-        if (
-            "authentication" in push["stderr"].lower()
-            or "could not read username"
-            in push["stderr"].lower()
-        ):
-            status = "AUTH_FAILURE"
-
-        elif (
-            "network" in push["stderr"].lower()
-            or "resolve host"
-            in push["stderr"].lower()
-        ):
-            status = "NETWORK_FAILURE"
-
-        create_remote_event(
-            operation="GIT_PUSH",
-            status=status,
-            local_head=local_before,
-            detail={
-                "stderr": push["stderr"]
+    if not verify_head_full_pass():
+        print(
+            "PUSH BLOCKED: HEAD has no valid FULL PASS binding"
+        )
+        durable_event(
+            "PUSH_GATE_BLOCKED",
+            {
+                "reason": (
+                    "HEAD FULL PASS verification failed"
+                )
             }
         )
+        return 21
 
-        print(status)
-        return 7
-
-    fetch = run_git(
+    fetch_before = run_git(
         ["fetch", "origin"]
     )
 
-    if fetch["status"] != "SUCCESS":
-        create_remote_event(
-            operation="REMOTE_VERIFY",
-            status="FETCH_FAILED",
-            local_head=local_before,
-            detail={
-                "stderr": fetch["stderr"]
+    if fetch_before["status"] != "SUCCESS":
+        durable_event(
+            "FETCH_FAILED",
+            {
+                "stderr": fetch_before["stderr"]
             }
         )
-
-        return 8
+        return 22
 
     local_head = git_value(
         ["rev-parse", "HEAD"]
@@ -184,32 +174,92 @@ def push_and_verify():
         ["rev-parse", "origin/main"]
     )
 
-    if local_head != remote_head:
-        create_remote_event(
-            operation="REMOTE_VERIFY",
-            status="VERIFY_FAILED",
-            local_head=local_head,
-            remote_head=remote_head
+    relation = git_value(
+        [
+            "rev-list",
+            "--left-right",
+            "--count",
+            "origin/main...HEAD"
+        ]
+    )
+
+    print(
+        "PRE-PUSH AHEAD/BEHIND:",
+        relation
+    )
+
+    parts = relation.split()
+
+    if len(parts) == 2:
+        behind = int(parts[0])
+
+        if behind != 0:
+            durable_event(
+                "DIVERGENCE_BLOCKED",
+                {
+                    "ahead_behind": relation
+                }
+            )
+            return 23
+
+    push = run_git(
+        ["push", "origin", "main"]
+    )
+
+    if push["status"] != "SUCCESS":
+        durable_event(
+            "PUSH_FAILED",
+            {
+                "stderr": push["stderr"]
+            }
         )
+        return 24
 
-        return 9
+    fetch = run_git(
+        ["fetch", "origin"]
+    )
 
-    create_remote_event(
-        operation="GIT_PUSH_REMOTE_VERIFY",
-        status="PASS",
-        local_head=local_head,
-        remote_head=remote_head,
-        detail={
+    if fetch["status"] != "SUCCESS":
+        durable_event(
+            "FETCH_FAILED",
+            {
+                "stderr": fetch["stderr"]
+            }
+        )
+        return 25
+
+    final_local = git_value(
+        ["rev-parse", "HEAD"]
+    )
+
+    final_remote = git_value(
+        ["rev-parse", "origin/main"]
+    )
+
+    if final_local != final_remote:
+        durable_event(
+            "VERIFY_FAILED",
+            {
+                "local_head": final_local,
+                "remote_head": final_remote
+            }
+        )
+        return 26
+
+    durable_event(
+        "PASS",
+        {
+            "full_pass_gate": "PASS",
             "push": "SUCCESS",
-            "fetch": "SUCCESS",
+            "remote_verify": "PASS",
             "local_equals_remote": True
         }
     )
 
     print("PUSH: SUCCESS")
     print("REMOTE VERIFY: PASS")
-    print("LOCAL HEAD :", local_head)
-    print("REMOTE HEAD:", remote_head)
+    print("LOCAL HEAD :", final_local)
+    print("REMOTE HEAD:", final_remote)
 
     return 0
 
@@ -226,7 +276,6 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
 
-    if args.action == "push":
-        raise SystemExit(
-            push_and_verify()
-        )
+    raise SystemExit(
+        push_and_verify()
+    )

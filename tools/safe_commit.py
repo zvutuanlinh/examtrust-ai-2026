@@ -1,7 +1,5 @@
 
 from pathlib import Path
-from zoneinfo import ZoneInfo
-from datetime import datetime
 import subprocess
 import re
 import json
@@ -12,6 +10,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
 from tools.autonote import create_note
+from tools.full_pass import run_full_pass
 
 
 SECRET_PATTERNS = [
@@ -21,25 +20,24 @@ SECRET_PATTERNS = [
         r"\s*[:=]\s*['\"]?[^\s'\"]{8,}"
     ),
     re.compile(
-        r"(?i)\bauthorization\s*:\s*bearer\s+"
-        r"[A-Za-z0-9._-]+"
-    ),
+        r"(?i)\bauthorization\s*:\s*bearer\s+[A-Za-z0-9._-]+"
+    )
 ]
 
 BLOCKED_FILENAMES = {
     ".env",
     "credentials.json",
-    "secret.txt",
+    "secret.txt"
 }
 
 BLOCKED_SUFFIXES = {
     ".pem",
-    ".key",
+    ".key"
 }
 
 
 def run_git(args):
-    process = subprocess.run(
+    p = subprocess.run(
         ["git"] + args,
         cwd=ROOT,
         text=True,
@@ -48,39 +46,27 @@ def run_git(args):
     )
 
     return (
-        process.returncode,
-        process.stdout.strip(),
-        process.stderr.strip()
+        p.returncode,
+        p.stdout.strip(),
+        p.stderr.strip()
     )
 
 
 def changed_files():
-    """
-    Return all tracked changes plus untracked non-ignored files.
-
-    This deliberately avoids parsing fixed character positions
-    from `git status --porcelain`, which can be fragile.
-    """
-
     files = set()
 
-    # Tracked files changed relative to HEAD:
-    # staged + unstaged + deleted/renamed paths.
     code, out, err = run_git(
         ["diff", "--name-only", "HEAD"]
     )
 
     if code != 0:
-        raise RuntimeError(
-            f"git diff failed: {err}"
-        )
+        raise RuntimeError(err)
 
     for rel in out.splitlines():
         rel = rel.strip()
         if rel:
             files.add(rel)
 
-    # Untracked files that are not ignored by .gitignore.
     code, out, err = run_git(
         [
             "ls-files",
@@ -90,9 +76,7 @@ def changed_files():
     )
 
     if code != 0:
-        raise RuntimeError(
-            f"git ls-files failed: {err}"
-        )
+        raise RuntimeError(err)
 
     for rel in out.splitlines():
         rel = rel.strip()
@@ -101,106 +85,51 @@ def changed_files():
 
     return sorted(files)
 
-def scan_secrets(files):
+
+def scan_precommit(files):
     problems = []
 
     for rel in files:
-        path = ROOT / rel
+        p = ROOT / rel
+        normalized = rel.replace("\\", "/")
 
-        if path.name in BLOCKED_FILENAMES:
+        if normalized.startswith("data/raw/"):
             problems.append(
-                f"BLOCKED_FILE: {rel}"
+                f"RAW_FILE:{rel}"
             )
-            continue
 
-        if path.suffix.lower() in BLOCKED_SUFFIXES:
+        if p.name in BLOCKED_FILENAMES:
             problems.append(
-                f"BLOCKED_SECRET_FILE: {rel}"
+                f"BLOCKED_FILE:{rel}"
             )
-            continue
 
-        if not path.exists() or not path.is_file():
+        if p.suffix.lower() in BLOCKED_SUFFIXES:
+            problems.append(
+                f"SECRET_FILE:{rel}"
+            )
+
+        if not p.exists() or not p.is_file():
             continue
 
         try:
-            content = path.read_text(
+            content = p.read_text(
                 encoding="utf-8",
                 errors="ignore"
             )
         except Exception:
             continue
 
-        for pattern in SECRET_PATTERNS:
-            if pattern.search(content):
+        for rx in SECRET_PATTERNS:
+            if rx.search(content):
                 problems.append(
-                    f"SECRET_PATTERN_FOUND: {rel}"
+                    f"SECRET_PATTERN:{rel}"
                 )
                 break
 
     return problems
 
 
-def check_raw_policy(files):
-    problems = []
-
-    for rel in files:
-        normalized = rel.replace("\\", "/")
-
-        if normalized.startswith("data/raw/"):
-            problems.append(
-                f"RAW_FILE_IN_GIT_SCOPE: {rel}"
-            )
-
-    return problems
-
-
-def syntax_check(files):
-    python_files = [
-        rel
-        for rel in files
-        if rel.endswith(".py")
-        and (ROOT / rel).exists()
-    ]
-
-    if not python_files:
-        return True, []
-
-    errors = []
-
-    for rel in python_files:
-        process = subprocess.run(
-            [
-                sys.executable,
-                "-m",
-                "py_compile",
-                rel
-            ],
-            cwd=ROOT,
-            text=True,
-            stdout=subprocess.PIPE,
-            stderr=subprocess.PIPE
-        )
-
-        if process.returncode != 0:
-            errors.append(
-                {
-                    "file": rel,
-                    "error": process.stderr.strip()
-                }
-            )
-
-    return len(errors) == 0, errors
-
-
-
 def rebuild_notes_index():
-    """
-    Rebuild root NOTES.md from canonical development note JSON records.
-
-    NOTES.md is a readable index only.
-    Canonical detailed evidence remains append-oriented under:
-    evidence/development_notes/
-    """
     notes_dir = (
         ROOT
         / "evidence"
@@ -255,7 +184,8 @@ def rebuild_notes_index():
         "- No backdated history.",
         "- No fabricated commits, Prompt Logs, benchmark results or demo evidence.",
         "- Failed/aborted transactions are preserved rather than deleted.",
-        "- `NOTES.md` is a readable index; JSON/Markdown files under `evidence/` are the detailed evidence.",
+        "- Commit requires FULL PASS before execution.",
+        "- Push requires a FULL PASS record bound to the commit.",
         "",
         "## Development history",
         "",
@@ -287,113 +217,66 @@ def rebuild_notes_index():
 
     lines += [
         "",
-        "## Reading the evidence",
-        "",
-        "Detailed development evidence:",
+        "## Detailed evidence",
         "",
         "```text",
         "evidence/development_notes/",
-        "```",
-        "",
-        "Remote publication evidence:",
-        "",
-        "```text",
-        "evidence/remote_events/",
+        "evidence/full_pass/",
         "```",
         ""
     ]
 
-    notes_path = ROOT / "NOTES.md"
-
-    notes_path.write_text(
+    (ROOT / "NOTES.md").write_text(
         "\n".join(lines),
         encoding="utf-8"
     )
 
-    return notes_path
-
 
 def safe_commit(goal, message):
-    files_before = changed_files()
+    files = changed_files()
 
-    if not files_before:
+    if not files:
         print("NO_CHANGES")
         return 0
 
     print("\nCHANGED FILES")
-    for rel in files_before:
+    for rel in files:
         print(" -", rel)
 
-    safety_problems = []
+    problems = scan_precommit(files)
 
-    safety_problems.extend(
-        scan_secrets(files_before)
-    )
-
-    safety_problems.extend(
-        check_raw_policy(files_before)
-    )
-
-    if safety_problems:
-        print("\nBLOCK")
-        for item in safety_problems:
-            print(" -", item)
-
+    if problems:
         create_note(
             goal=goal,
             status="BLOCKED",
             extra={
-                "problems": safety_problems
+                "problems": problems
             }
         )
+
+        print("PRECOMMIT BLOCK")
+        for p in problems:
+            print(" -", p)
 
         return 2
 
-    syntax_ok, syntax_errors = syntax_check(
-        files_before
-    )
-
-    if not syntax_ok:
-        print("\nSYNTAX_FAILED")
-        print(
-            json.dumps(
-                syntax_errors,
-                ensure_ascii=False,
-                indent=2
-            )
-        )
-
-        create_note(
-            goal=goal,
-            status="SYNTAX_FAILED",
-            extra={
-                "errors": syntax_errors
-            }
-        )
-
-        return 3
-
-    note_id = create_note(
+    create_note(
         goal=goal,
         status="PRE_COMMIT",
         extra={
-            "safety": "PASS",
-            "syntax": "PASS",
-            "commit_message": message
+            "commit_message": message,
+            "full_pass_required": True
         }
     )
 
-    # Refresh the human-readable history index
-    # before staging so NOTES.md belongs to
-    # the same evidence transaction.
     rebuild_notes_index()
 
-    files_after_note = changed_files()
+    files = changed_files()
 
     stage_files = [
-        rel
-        for rel in files_after_note
-        if not rel.replace("\\", "/")
+        x
+        for x in files
+        if not x.replace("\\", "/")
         .startswith("data/raw/")
     ]
 
@@ -403,15 +286,40 @@ def safe_commit(goal, message):
 
     if code != 0:
         print(err)
-        return 4
+        return 3
 
     print("\nSTAGED SCOPE")
-
     code, out, err = run_git(
-        ["diff", "--cached", "--name-status"]
+        [
+            "diff",
+            "--cached",
+            "--name-status"
+        ]
+    )
+    print(out)
+
+    rc, pass_path, pass_record = run_full_pass(
+        goal=goal,
+        commit_message=message
     )
 
-    print(out)
+    if rc != 0:
+        print(
+            "COMMIT BLOCKED: FULL PASS FAILED"
+        )
+        return 10
+
+    pass_rel = str(
+        pass_path.relative_to(ROOT)
+    ).replace("\\", "/")
+
+    code, out, err = run_git(
+        ["add", "--", pass_rel]
+    )
+
+    if code != 0:
+        print(err)
+        return 4
 
     code, out, err = run_git(
         ["commit", "-m", message]
@@ -425,22 +333,24 @@ def safe_commit(goal, message):
     print("\nCOMMIT CREATED")
     print(out)
 
-    code, head, err = run_git(
+    head = run_git(
         ["rev-parse", "HEAD"]
-    )
+    )[1]
 
-    print("COMMIT SHA:", head)
-
-    code, status, err = run_git(
+    tree_status = run_git(
         ["status", "--porcelain"]
-    )
+    )[1]
 
-    if status.strip():
-        print("\nWARNING: WORKING TREE NOT CLEAN")
-        print(status)
+    if tree_status.strip():
+        print(
+            "POST_COMMIT_VERIFY_FAIL: "
+            "working tree not clean"
+        )
         return 6
 
-    print("\nPOST VERIFY: PASS")
+    print("COMMIT SHA:", head)
+    print("FULL PASS: VERIFIED PRE-COMMIT")
+    print("POST VERIFY: PASS")
     print("WORKING TREE: CLEAN")
 
     return 0
