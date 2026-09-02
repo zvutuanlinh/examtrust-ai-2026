@@ -1,0 +1,15 @@
+{
+  "session_id": "SESSION-20260902-233751",
+  "started_at": "2026-09-02T23:37:51+07:00",
+  "start_head": "15551953141fbf2ca695955a865b97053cdd5fad",
+  "status": "CLOSED_BY_COMMIT",
+  "ended_at": "2026-09-02T23:39:31+07:00",
+  "pre_close_head": "f3bc724af6febb31c0f425c6e07071ae840cb87d",
+  "commits_before_close": [
+    {
+      "sha": "f3bc724af6febb31c0f425c6e07071ae840cb87d",
+      "message": "fix(evidence): include full pass records in durable checkpoints"
+    }
+  ],
+  "closure_method": "safe_commit"
+}
