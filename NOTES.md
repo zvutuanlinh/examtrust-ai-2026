@@ -32,6 +32,7 @@
 | 2026-09-02T18:06:06+07:00 | PRE_COMMIT | `DEV-20260902-180606` | Enforce mandatory FULL PASS validation before every ExamTrust commit and bind push authorization to validated commit evidence |
 | 2026-09-02T18:07:17+07:00 | PRE_COMMIT | `DEV-20260902-180717` | Isolate AutoTrace runtime session state from Git before final foundation dry-run |
 | 2026-09-02T18:07:24+07:00 | PRE_COMMIT | `DEV-20260902-180724` | Close development session SESSION-20260902-180723 with session evidence |
+| 2026-09-02T18:35:36+07:00 | PRE_COMMIT | `DEV-20260902-183536` | Build DATA-PROV-01 data and prompt lineage foundation with append-only Run IDs, SHA256 manifests and credential-safe evidence |
 
 ## Detailed evidence
 

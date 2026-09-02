@@ -1,0 +1,19 @@
+{
+  "note_id": "DEV-20260902-183536",
+  "timestamp": "2026-09-02T18:35:36+07:00",
+  "goal": "Build DATA-PROV-01 data and prompt lineage foundation with append-only Run IDs, SHA256 manifests and credential-safe evidence",
+  "git_head_before": "3dfa1fa18b358b3eee856f2b03f02ac7cd2dce32",
+  "changed_files": [
+    "docs/DATA_PROMPT_PROVENANCE_POLICY.md",
+    "tests/test_lineage_foundation.py",
+    "tools/data_logger.py",
+    "tools/hash_utils.py",
+    "tools/prompt_logger.py"
+  ],
+  "status": "PRE_COMMIT",
+  "extra": {
+    "commit_message": "feat(provenance): add data and prompt lineage foundation",
+    "full_pass_required": true
+  },
+  "record_sha256": "750f74f95da2781b8ee4a93188dd866ef6bf6732702734d96e313a924a3c3844"
+}
