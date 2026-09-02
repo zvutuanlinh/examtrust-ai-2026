@@ -7,14 +7,22 @@ import json
 import sys
 
 ROOT = Path(__file__).resolve().parents[1]
-STATE_DIR = ROOT / ".autotrace"
-STATE_DIR.mkdir(parents=True, exist_ok=True)
 
-ACTIVE_SESSION = STATE_DIR / "active_session.json"
+STATE_DIR = ROOT / ".autotrace"
+STATE_DIR.mkdir(
+    parents=True,
+    exist_ok=True
+)
+
+ACTIVE_SESSION = (
+    STATE_DIR
+    / "active_session.json"
+)
 
 sys.path.insert(0, str(ROOT))
 
 from tools.safe_commit import safe_commit
+from tools.remote_logger import push_and_verify
 
 
 def now():
@@ -50,9 +58,11 @@ def current_head():
 def start_session():
     if ACTIVE_SESSION.exists():
         print("SESSION_ALREADY_ACTIVE")
-        print(ACTIVE_SESSION.read_text(
-            encoding="utf-8"
-        ))
+        print(
+            ACTIVE_SESSION.read_text(
+                encoding="utf-8"
+            )
+        )
         return 2
 
     ts = now()
@@ -101,17 +111,20 @@ def commits_since(start_head):
     if code != 0 or not out:
         return []
 
-    commits = []
+    records = []
 
     for line in out.splitlines():
-        sha, message = line.split("|", 1)
+        sha, message = line.split(
+            "|",
+            1
+        )
 
-        commits.append({
+        records.append({
             "sha": sha,
             "message": message
         })
 
-    return commits
+    return records
 
 
 def end_session(push=False):
@@ -125,37 +138,30 @@ def end_session(push=False):
         )
     )
 
-    # Commit any meaningful outstanding changes.
-    rc = safe_commit(
-        goal=(
-            f"Close development session "
-            f"{session['session_id']}"
-        ),
-        message=(
-            "chore(session): close development session"
-        )
-    )
-
-    # NO_CHANGES is also acceptable.
-    if rc not in (0,):
-        print(
-            "SESSION_CLOSE_COMMIT_FAILED:",
-            rc
-        )
-        return rc
-
     end_ts = now()
 
+    # IMPORTANT:
+    # Session summary is created BEFORE safe_commit,
+    # so it becomes part of the same closure commit.
     final_record = {
         **session,
         "ended_at": end_ts.isoformat(
             timespec="seconds"
         ),
-        "end_head": current_head(),
-        "commits": commits_since(
-            session.get("start_head")
+        "pre_close_head": current_head(),
+        "commits_before_close": (
+            commits_since(
+                session.get(
+                    "start_head"
+                )
+            )
         ),
-        "status": "CLOSED"
+        "closure_method": (
+            "safe_commit"
+        ),
+        "status": (
+            "CLOSED_BY_COMMIT"
+        )
     }
 
     output_dir = (
@@ -183,23 +189,42 @@ def end_session(push=False):
         encoding="utf-8"
     )
 
-    ACTIVE_SESSION.unlink()
+    rc = safe_commit(
+        goal=(
+            "Close development session "
+            f"{session['session_id']} "
+            "with session evidence"
+        ),
+        message=(
+            "chore(session): "
+            "close development session"
+        )
+    )
+
+    if rc != 0:
+        print(
+            "SESSION_CLOSE_FAILED:",
+            rc
+        )
+        return rc
+
+    ACTIVE_SESSION.unlink(
+        missing_ok=True
+    )
 
     print("SESSION_CLOSED")
     print("Evidence:", output_path)
-    print("End HEAD:", final_record["end_head"])
+    print("Closure HEAD:", current_head())
 
     if push:
-        code, out, err = run_git(
-            ["push"]
-        )
+        remote_rc = push_and_verify()
 
-        if code != 0:
-            print("PUSH_PENDING")
-            print(err)
-            return 7
-
-        print("PUSH_SUCCESS")
+        if remote_rc != 0:
+            print(
+                "SESSION CLOSED LOCALLY; "
+                "REMOTE SYNC PENDING"
+            )
+            return remote_rc
 
     return 0
 
@@ -211,7 +236,10 @@ if __name__ == "__main__":
 
     parser.add_argument(
         "action",
-        choices=["start", "end"]
+        choices=[
+            "start",
+            "end"
+        ]
     )
 
     parser.add_argument(
