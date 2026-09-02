@@ -1,0 +1,16 @@
+{
+  "note_id": "DEV-20260902-102212",
+  "timestamp": "2026-09-02T10:22:12+00:00",
+  "goal": "Prepare initial ExamTrust repository with integrity policy and automatic development history",
+  "git_head_before": "NO_COMMIT_YET",
+  "changed_files": [
+    ".gitignore",
+    "PROJECT_ORIGIN.md",
+    "evidence/development_notes/DEV-20260902-101742.json",
+    "evidence/development_notes/DEV-20260902-101742.md",
+    "tools/autonote.py"
+  ],
+  "status": "PRE_COMMIT",
+  "extra": {},
+  "record_sha256": "93be988c7cf056a5daa6c13c37c9ad219e9b118bfc46a8cfa03bfb5f82448a25"
+}

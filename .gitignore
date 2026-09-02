@@ -1,0 +1,39 @@
+# Secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+credentials.json
+secret.txt
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+.pytest_cache/
+
+# Colab / OS
+.ipynb_checkpoints/
+.DS_Store
+Thumbs.db
+
+# Runtime
+tmp/
+logs/
+.cache/
+
+# Private/raw data
+data/raw/*
+data/private/*
+evidence/private/
+
+# Credentials / tokens
+*token*
+*secret*
+
+# Large generated media
+*.mp4
+*.mov
+*.avi
