@@ -1,0 +1,10 @@
+{
+  "event_id": "REMOTE-20260902-174855",
+  "timestamp": "2026-09-02T17:48:55+07:00",
+  "operation": "GH_AUTH_LOGIN",
+  "local_head": "c8931a33f29d89c68e307a70dc4d800cf90f5fed",
+  "status": "AUTH_FAILURE",
+  "reason": "Classic PAT missing required read:org scope for GitHub CLI.",
+  "remote_changed": false,
+  "credential_persisted_in_evidence": false
+}

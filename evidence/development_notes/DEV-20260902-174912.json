@@ -1,0 +1,16 @@
+{
+  "note_id": "DEV-20260902-174912",
+  "timestamp": "2026-09-02T17:49:12+07:00",
+  "goal": "Record GitHub authentication failure caused by insufficient PAT scope before successful retry",
+  "git_head_before": "c8931a33f29d89c68e307a70dc4d800cf90f5fed",
+  "changed_files": [
+    "evidence/remote_events/REMOTE-20260902-174855_AUTH_MISSING_SCOPE.json"
+  ],
+  "status": "PRE_COMMIT",
+  "extra": {
+    "safety": "PASS",
+    "syntax": "PASS",
+    "commit_message": "docs(git): record PAT scope authentication failure"
+  },
+  "record_sha256": "0f98d001c69200b1a41691d4ee3ec4491292ac6fa136d28de949a21897370353"
+}
