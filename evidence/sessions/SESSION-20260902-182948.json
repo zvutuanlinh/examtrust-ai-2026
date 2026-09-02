@@ -1,0 +1,15 @@
+{
+  "session_id": "SESSION-20260902-182948",
+  "started_at": "2026-09-02T18:29:48+07:00",
+  "start_head": "3dfa1fa18b358b3eee856f2b03f02ac7cd2dce32",
+  "status": "CLOSED_BY_COMMIT",
+  "ended_at": "2026-09-02T18:35:45+07:00",
+  "pre_close_head": "fd17016299980ab9cfdcf9a08b41962cc7e68564",
+  "commits_before_close": [
+    {
+      "sha": "fd17016299980ab9cfdcf9a08b41962cc7e68564",
+      "message": "feat(provenance): add data and prompt lineage foundation"
+    }
+  ],
+  "closure_method": "safe_commit"
+}

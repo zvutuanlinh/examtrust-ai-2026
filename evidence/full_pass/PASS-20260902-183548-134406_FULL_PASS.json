@@ -1,0 +1,93 @@
+{
+  "pass_id": "PASS-20260902-183548-134406",
+  "timestamp": "2026-09-02T18:35:48+07:00",
+  "goal": "Close development session SESSION-20260902-182948 with session evidence",
+  "commit_message": "chore(session): close development session",
+  "parent_head": "fd17016299980ab9cfdcf9a08b41962cc7e68564",
+  "status": "FULL_PASS",
+  "gates": [
+    {
+      "gate": "SYNTAX",
+      "status": "PASS",
+      "checked_files": 11,
+      "errors": []
+    },
+    {
+      "gate": "UNIT_REGRESSION",
+      "status": "PASS",
+      "stdout": "DATA_RUN_CREATED\nRun ID: ETDATA-TEST-001\nPath: /tmp/tmp4uuczqj_/evidence/ETDATA-TEST-001\nInput count: 1\nOutput count: 0\nManifest SHA256: 48205392e38c4b8b961013820a53885a1e0f1d659feb8d416116d8c22fcaf860\nSHA256SUMS SHA256: 7666cea081f49561321dcc2f133e8c30ce6d83dd7adcfadd57ab02659d75dba8\nDATA_RUN_CREATED\nRun ID: ETDATA-TEST-002\nPath: /tmp/tmpyvwrz5kw/evidence/ETDATA-TEST-002\nInput count: 1\nOutput count: 0\nManifest SHA256: e1f5d809e70e19a29d02fc93795fccd53beb7847ea194229d1cf61ec6e049c2e\nSHA256SUMS SHA256: b75013ad82864a6725cf317f5c6d5019d831a37117a3a2c3592e00f3b8ed68d8\nPROMPT_RUN_CREATED\nRun ID: ETPROMPT-TEST-001\nPath: /tmp/tmp7k3po43c/evidence/ETPROMPT-TEST-001\nContract: QC-TEST-001\nPrompt SHA256: 43f985d62940dc25c6fe72045242ce88cb3385a3b09c20a5cfd931b66ec51c17\nResponse SHA256: 39a28d910761d73ae8efc307a7366dcc8ec20e405a564223e794ca4e4a1bfb55\nSnapshot stored: True\nManifest SHA256: 16434ab8bbed33163382b7edaf3b4d83047544afed33b52e515e25f525d9cfcb\nSHA256SUMS SHA256: 35ff2560155c5a9330237349a7c257df548258c6dc3c5e37e0d50a05f8fc61c4\nPROMPT_RUN_CREATED\nRun ID: ETPROMPT-TEST-002\nPath: /tmp/tmp4g5w5yq6/evidence/ETPROMPT-TEST-002\nContract: QC-001\nPrompt SHA256: f16d05ec6b29248d2c61adb1e9263f78e4f7bace1b955014a2d17872cfe4064d\nResponse SHA256: None\nSnapshot stored: False\nManifest SHA256: ae88bf70a88109ac0db94039401f1b3385689e8bd6eb86178565179580b36596\nSHA256SUMS SHA256: c0dcc4b1872c93bf5625c3f5bdd2300c00d9027bbfc86df68095e50c5a44aa80",
+      "stderr": "test_autotrace_runtime_is_ignored (test_git_foundation.TestGitFoundation.test_autotrace_runtime_is_ignored) ... ok\ntest_sha256_detects_change (test_git_foundation.TestGitFoundation.test_sha256_detects_change) ... ok\ntest_sha256_is_stable (test_git_foundation.TestGitFoundation.test_sha256_is_stable) ... ok\ntest_data_logger_does_not_modify_source (test_lineage_foundation.TestLineageFoundation.test_data_logger_does_not_modify_source) ... ok\ntest_data_run_id_is_append_only (test_lineage_foundation.TestLineageFoundation.test_data_run_id_is_append_only) ... ok\ntest_prompt_hash_lineage (test_lineage_foundation.TestLineageFoundation.test_prompt_hash_lineage) ... ok\ntest_prompt_run_id_is_append_only (test_lineage_foundation.TestLineageFoundation.test_prompt_run_id_is_append_only) ... ok\ntest_sensitive_snapshot_is_blocked (test_lineage_foundation.TestLineageFoundation.test_sensitive_snapshot_is_blocked) ... ok\n\n----------------------------------------------------------------------\nRan 8 tests in 0.015s\n\nOK"
+    },
+    {
+      "gate": "ADVERSARIAL_SAFETY",
+      "status": "PASS",
+      "problems": []
+    },
+    {
+      "gate": "OPERATIONAL_ACCEPTANCE",
+      "status": "PASS",
+      "tools": [
+        {
+          "tool": "tools/autonote.py",
+          "status": "PASS"
+        },
+        {
+          "tool": "tools/safe_commit.py",
+          "status": "PASS"
+        },
+        {
+          "tool": "tools/session_logger.py",
+          "status": "PASS"
+        },
+        {
+          "tool": "tools/remote_logger.py",
+          "status": "PASS"
+        },
+        {
+          "tool": "tools/durable_evidence.py",
+          "status": "PASS"
+        },
+        {
+          "tool": "tools/full_pass.py",
+          "status": "PASS"
+        }
+      ]
+    },
+    {
+      "gate": "STAGED_SCOPE",
+      "status": "PASS",
+      "files": [
+        "NOTES.md",
+        "evidence/development_notes/DEV-20260902-183545.json",
+        "evidence/development_notes/DEV-20260902-183545.md",
+        "evidence/sessions/SESSION-20260902-182948.json"
+      ],
+      "problems": []
+    }
+  ],
+  "candidate_manifest": [
+    {
+      "path": "NOTES.md",
+      "sha256": "148093e83a15332899b53f99f2c56963a43c00ec62f03b7e6544da94576d2e8d",
+      "size_bytes": 3475
+    },
+    {
+      "path": "evidence/development_notes/DEV-20260902-183545.json",
+      "sha256": "50b64c2baf2c14d7f37083ba20090dce773c0c6cdc5cff9671e478e22b4abab4",
+      "size_bytes": 540
+    },
+    {
+      "path": "evidence/development_notes/DEV-20260902-183545.md",
+      "sha256": "288ba4e94af778a8e8d6fe9461c2ec5f648b4e3380b7540f5f06cbc1b95f652c",
+      "size_bytes": 551
+    },
+    {
+      "path": "evidence/sessions/SESSION-20260902-182948.json",
+      "sha256": "b752ce4b6eeb372937927293f570564eadd1014f176ad59d455ec8a1357d3037",
+      "size_bytes": 502
+    }
+  ],
+  "credential_persisted": false,
+  "force_push_authorized": false,
+  "record_sha256": "b016903ad233cf25867dccac364a57d3fbcfa99e26378a17bfaef93a97cb6f75"
+}
