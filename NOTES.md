@@ -42,6 +42,7 @@
 | 2026-09-02T23:53:28+07:00 | PRE_COMMIT | `DEV-20260902-235328` | Prevent recurrence of observed Git identity failure by enforcing repository-local user.name and user.email preflight before AutoNote, FULL PASS and commit execution; correct identity probe implementation after observed run_git interface failure |
 | 2026-09-02T23:53:33+07:00 | PRE_COMMIT | `DEV-20260902-235333` | Close development session SESSION-20260902-234221 with session evidence |
 | 2026-09-03T06:18:19+07:00 | PRE_COMMIT | `DEV-20260903-061819` | Register the SHA256 fingerprint and lineage of the ExamTrust professional working notebook as Git-backed evidence without storing the .ipynb content in Git. |
+| 2026-09-03T06:58:07+07:00 | PRE_COMMIT | `DEV-20260903-065807` | Establish the canonical ExamTrust storage contract, controlled SourceGuard/Pilot materialization, exact-tree acceptance, and durable checkpoint coverage for notebook lineage and external SourceGuard governance evidence with explicit provenance. |
 
 ## Detailed evidence
 

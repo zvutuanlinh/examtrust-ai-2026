@@ -1,0 +1,26 @@
+{
+  "note_id": "DEV-20260903-065807",
+  "timestamp": "2026-09-03T06:58:07+07:00",
+  "goal": "Establish the canonical ExamTrust storage contract, controlled SourceGuard/Pilot materialization, exact-tree acceptance, and durable checkpoint coverage for notebook lineage and external SourceGuard governance evidence with explicit provenance.",
+  "git_head_before": "87e33db966e6a946fe74553bb9cb50b53a1cf475",
+  "changed_files": [
+    "tests/test_durable_evidence_coverage.py",
+    "tests/test_durable_evidence_external_coverage.py",
+    "tests/test_storage_layout_contract.py",
+    "tests/test_storage_materializer.py",
+    "tools/data_logger.py",
+    "tools/durable_evidence.py",
+    "tools/prompt_logger.py",
+    "tools/provenance_binding.py",
+    "tools/remote_logger.py",
+    "tools/source_registry.py",
+    "tools/storage_layout.py",
+    "tools/storage_materializer.py"
+  ],
+  "status": "PRE_COMMIT",
+  "extra": {
+    "commit_message": "feat(storage): establish canonical evidence storage foundation",
+    "full_pass_required": true
+  },
+  "record_sha256": "634730c23bd1f77c85aa59839c5572513b5980cdde1d6352bc3adf2a74de84f0"
+}

@@ -3,7 +3,7 @@ import unittest
 from pathlib import Path
 
 
-class TestDurableEvidenceCoverage(unittest.TestCase):
+class TestDurableEvidenceExternalCoverage(unittest.TestCase):
 
     def setUp(self):
         self.repo = Path(__file__).resolve().parents[1]
@@ -32,57 +32,71 @@ class TestDurableEvidenceCoverage(unittest.TestCase):
                     node
                 )
 
-                self.assertIsNotNone(
-                    segment
-                )
-
+                self.assertIsNotNone(segment)
                 return segment
 
         self.fail(
             f"Function not found: {name}"
         )
 
-    def test_repo_evidence_contract_includes_required_roots(self):
+    def test_notebook_lineage_is_in_repo_evidence_contract(self):
         segment = self.function_segment(
             "evidence_records"
         )
 
-        expected = [
-            "development_notes",
-            "full_pass",
-            "remote_events",
-            "sessions",
+        self.assertIn(
             "notebook_lineage",
-        ]
+            segment
+        )
 
-        for name in expected:
+        self.assertIn(
+            "repo_evidence",
+            segment
+        )
+
+    def test_sourceguard_governance_is_external_evidence(self):
+        segment = self.function_segment(
+            "evidence_records"
+        )
+
+        self.assertIn(
+            "SOURCEGUARD_GOVERNANCE_ROOT",
+            segment
+        )
+
+        self.assertIn(
+            "external_evidence",
+            segment
+        )
+
+        self.assertIn(
+            "drive_external_sourceguard_governance",
+            segment
+        )
+
+    def test_manifest_preserves_source_provenance(self):
+        segment = self.function_segment(
+            "create_checkpoint"
+        )
+
+        for token in [
+            "source_class",
+            "source_root",
+            "source_relative_path",
+            "sha256_file(dst)",
+        ]:
             self.assertIn(
-                name,
+                token,
                 segment
             )
 
-    def test_evidence_files_remains_backward_compatible(self):
-        segment = self.function_segment(
-            "evidence_files"
-        )
-
-        self.assertIn(
-            "evidence_records()",
-            segment
-        )
-
-        self.assertIn(
-            'item["src"]',
-            segment
-        )
-
-    def test_checkpoint_uses_explicit_evidence_records(self):
+    def test_new_checkpoint_path_uses_evidence_records(self):
         segment = self.function_segment(
             "create_checkpoint"
         )
 
         self.assertIn(
-            "evidence_records()",
+            "for evidence_record in evidence_records()",
             segment
         )
 

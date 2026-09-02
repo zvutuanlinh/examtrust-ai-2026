@@ -5,6 +5,17 @@ import argparse
 import json
 import sys
 
+# ARCH-STORAGE-01: canonical storage contract
+try:
+    from tools.storage_layout import (
+        DATA_RUNS_ROOT
+    )
+except ModuleNotFoundError:
+    from storage_layout import (
+        DATA_RUNS_ROOT
+    )
+
+
 ROOT = Path(__file__).resolve().parents[1]
 
 if str(ROOT) not in sys.path:
@@ -17,11 +28,7 @@ from tools.hash_utils import (
 )
 
 
-DEFAULT_ROOT = Path(
-    '/content/drive/MyDrive/'
-    'ExamTrust_AI_2026/'
-    'EVIDENCE/DATA_RUNS'
-)
+DEFAULT_ROOT = DATA_RUNS_ROOT
 
 
 def now():

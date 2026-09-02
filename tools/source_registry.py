@@ -6,6 +6,17 @@ import json
 import mimetypes
 import sys
 
+# ARCH-STORAGE-01: canonical storage contract
+try:
+    from tools.storage_layout import (
+        SOURCES_ROOT
+    )
+except ModuleNotFoundError:
+    from storage_layout import (
+        SOURCES_ROOT
+    )
+
+
 ROOT = Path(__file__).resolve().parents[1]
 
 if str(ROOT) not in sys.path:
@@ -17,11 +28,7 @@ from tools.hash_utils import (
 )
 
 
-DEFAULT_ROOT = Path(
-    '/content/drive/MyDrive/'
-    'ExamTrust_AI_2026/'
-    'EVIDENCE/SOURCES'
-)
+DEFAULT_ROOT = SOURCES_ROOT
 
 
 def now():

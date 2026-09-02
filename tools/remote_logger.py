@@ -6,18 +6,24 @@ import subprocess
 import json
 import sys
 
+# ARCH-STORAGE-01: canonical storage contract
+try:
+    from tools.storage_layout import (
+        AUTOTRACE_REMOTE_EVENT_ROOT
+    )
+except ModuleNotFoundError:
+    from storage_layout import (
+        AUTOTRACE_REMOTE_EVENT_ROOT
+    )
+
+
 ROOT = Path(__file__).resolve().parents[1]
 
 sys.path.insert(0, str(ROOT))
 
 from tools.full_pass import verify_head_full_pass
 
-DRIVE_REMOTE = Path(
-    "/content/drive/MyDrive/"
-    "ExamTrust_AI_2026/"
-    "EVIDENCE/AUTOTRACE/"
-    "remote_events"
-)
+DRIVE_REMOTE = AUTOTRACE_REMOTE_EVENT_ROOT
 
 DRIVE_REMOTE.mkdir(
     parents=True,

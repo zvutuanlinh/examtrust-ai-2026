@@ -1,0 +1,159 @@
+{
+  "pass_id": "PASS-20260903-065812-281141",
+  "timestamp": "2026-09-03T06:58:12+07:00",
+  "goal": "Establish the canonical ExamTrust storage contract, controlled SourceGuard/Pilot materialization, exact-tree acceptance, and durable checkpoint coverage for notebook lineage and external SourceGuard governance evidence with explicit provenance.",
+  "commit_message": "feat(storage): establish canonical evidence storage foundation",
+  "parent_head": "87e33db966e6a946fe74553bb9cb50b53a1cf475",
+  "status": "FULL_PASS",
+  "gates": [
+    {
+      "gate": "SYNTAX",
+      "status": "PASS",
+      "checked_files": 21,
+      "errors": []
+    },
+    {
+      "gate": "UNIT_REGRESSION",
+      "status": "PASS",
+      "stdout": "DATA_RUN_CREATED\nRun ID: ETDATA-TEST-001\nPath: /tmp/tmpbwpb7hs0/evidence/ETDATA-TEST-001\nInput count: 1\nOutput count: 0\nManifest SHA256: c45915287776556d14d7485b416eecaef9e129ce4f1ded89e5f35f4b3ea8c19c\nSHA256SUMS SHA256: cb4e6111cb6f613d6381d565333208e11a84006241f93b71cf61484f67b1dfa5\nDATA_RUN_CREATED\nRun ID: ETDATA-TEST-002\nPath: /tmp/tmpao50srfk/evidence/ETDATA-TEST-002\nInput count: 1\nOutput count: 0\nManifest SHA256: 1f1dbc1130aa5851ac234382151b1d4c30d00146f69f09110fc38730accd2a90\nSHA256SUMS SHA256: 0203e3b69d90f8afdd8c5e54aa7778215d6a24430fbee4ae097cd5670ab09fb9\nPROMPT_RUN_CREATED\nRun ID: ETPROMPT-TEST-001\nPath: /tmp/tmp_3d28b8e/evidence/ETPROMPT-TEST-001\nContract: QC-TEST-001\nPrompt SHA256: 43f985d62940dc25c6fe72045242ce88cb3385a3b09c20a5cfd931b66ec51c17\nResponse SHA256: 39a28d910761d73ae8efc307a7366dcc8ec20e405a564223e794ca4e4a1bfb55\nSnapshot stored: True\nManifest SHA256: 0ea6ddcc24735f4b76df27025ba1847264f43165ecf33b1e11c6a074cd4b18fc\nSHA256SUMS SHA256: e8522640a716ce27fb1a840fe5df050714e73fe8f1fea1e7746144db0bf8f49b\nPROMPT_RUN_CREATED\nRun ID: ETPROMPT-TEST-002\nPath: /tmp/tmp0bj167__/evidence/ETPROMPT-TEST-002\nContract: QC-001\nPrompt SHA256: f16d05ec6b29248d2c61adb1e9263f78e4f7bace1b955014a2d17872cfe4064d\nResponse SHA256: None\nSnapshot stored: False\nManifest SHA256: 0b469d6e6b331b501d2438c84161ad2612d3cb16d9eed62cbef38dd25e8df2aa\nSHA256SUMS SHA256: ba2b8f762622abd123e41f48a98fd519434d81551745b8de4ddf0af36edb01c4\nSOURCE_REGISTERED\nSource ID: SRC-F16D05EC6B29248D\nSHA256: f16d05ec6b29248d2c61adb1e9263f78e4f7bace1b955014a2d17872cfe4064d\nRaw content copied: NO\nSource mutated: NO\nDATA_RUN_CREATED\nRun ID: ETDATA-TEST-BIND-003\nPath: /tmp/tmp_59fh3wr/data_runs/ETDATA-TEST-BIND-003\nInput count: 1\nOutput count: 0\nManifest SHA256: 6983d5d6de390823f618e26b5d6b2b97c358a528db9e05e20a650ca1d6269f99\nSHA256SUMS SHA256: c706e7fa28f5cf5461ccb57cf769d15002890f98508b18fb0d7caab1c3feffc2\nDATA_RUN_CREATED\nRun ID: ETDATA-TEST-BIND-002\nPath: /tmp/tmprs449z2l/data_runs/ETDATA-TEST-BIND-002\nInput count: 1\nOutput count: 0\nManifest SHA256: 3f6dfaa22ec4e739d5282050d077d1895112d4740bba68dc65262145a85ab88f\nSHA256SUMS SHA256: 86ceca49d00c22ac1b36a601593684d4d249c96a2af190bacaafd5002e2abfc1\nSOURCE_REGISTERED\nSource ID: SRC-C3841ACACE2CFAAB\nSHA256: c3841acace2cfaab7124198973212ea3d995c5592c91de654fc5543ef9ee768d\nRaw content copied: NO\nSource mutated: NO\nDATA_RUN_CREATED\nRun ID: ETDATA-TEST-BIND-001\nPath: /tmp/tmp_x8qglxu/data_runs/ETDATA-TEST-BIND-001\nInput count: 1\nOutput count: 0\nManifest SHA256: 94d93972c6f7146ba6f02bd7fe6ff5ea54d336a4dc265a1f7d7c463c6214a676\nSHA256SUMS SHA256: d61e686e079f0b796dd161a15a09b0e3acb3c57f8b6c7a51ad5f2e479cde8d33\nPROVENANCE_BINDING_CREATED\nBinding ID: ETBIND-TEST-001\nSource ID: SRC-C3841ACACE2CFAAB\nData Run: ETDATA-TEST-BIND-001\nAsset ID: CH_001\nContract ID: QC-TEST-001\nPrompt Run: ETPROMPT-TEST-001\nQuestion ID: Q-TEST-001\nSOURCE_REGISTERED\nSource ID: SRC-559AEAD08264D579\nSHA256: 559aead08264d5795d3909718cdd05abd49572e84fe55590eef31a88a08fdffd\nRaw content copied: NO\nSource mutated: NO\nSOURCE_REGISTERED\nSource ID: SRC-DF7E70E5021544F4\nSHA256: df7e70e5021544f4834bbee64a9e3789febc4be81470df629cad6ddb03320a5c\nRaw content copied: NO\nSource mutated: NO\nSOURCE_REGISTERED\nSource ID: SRC-4343D14AF5D0DF58\nSHA256: 4343d14af5d0df58895df410237461f6f143112ba856709e1a497e6500e22a2c\nRaw content copied: NO\nSource mutated: NO\nSOURCE_ALREADY_REGISTERED\nSource ID: SRC-4343D14AF5D0DF58\nSOURCE_REGISTERED\nSource ID: SRC-A7DD97BC10922AE2\nSHA256: a7dd97bc10922ae22e523fd8af298c7e50c64c15643b9dee58475208c718fecf\nRaw content copied: NO\nSource mutated: NO",
+      "stderr": "test_checkpoint_uses_explicit_evidence_records (test_durable_evidence_coverage.TestDurableEvidenceCoverage.test_checkpoint_uses_explicit_evidence_records) ... ok\ntest_evidence_files_remains_backward_compatible (test_durable_evidence_coverage.TestDurableEvidenceCoverage.test_evidence_files_remains_backward_compatible) ... ok\ntest_repo_evidence_contract_includes_required_roots (test_durable_evidence_coverage.TestDurableEvidenceCoverage.test_repo_evidence_contract_includes_required_roots) ... ok\ntest_manifest_preserves_source_provenance (test_durable_evidence_external_coverage.TestDurableEvidenceExternalCoverage.test_manifest_preserves_source_provenance) ... ok\ntest_new_checkpoint_path_uses_evidence_records (test_durable_evidence_external_coverage.TestDurableEvidenceExternalCoverage.test_new_checkpoint_path_uses_evidence_records) ... ok\ntest_notebook_lineage_is_in_repo_evidence_contract (test_durable_evidence_external_coverage.TestDurableEvidenceExternalCoverage.test_notebook_lineage_is_in_repo_evidence_contract) ... ok\ntest_sourceguard_governance_is_external_evidence (test_durable_evidence_external_coverage.TestDurableEvidenceExternalCoverage.test_sourceguard_governance_is_external_evidence) ... ok\ntest_autotrace_runtime_is_ignored (test_git_foundation.TestGitFoundation.test_autotrace_runtime_is_ignored) ... ok\ntest_sha256_detects_change (test_git_foundation.TestGitFoundation.test_sha256_detects_change) ... ok\ntest_sha256_is_stable (test_git_foundation.TestGitFoundation.test_sha256_is_stable) ... ok\ntest_data_logger_does_not_modify_source (test_lineage_foundation.TestLineageFoundation.test_data_logger_does_not_modify_source) ... ok\ntest_data_run_id_is_append_only (test_lineage_foundation.TestLineageFoundation.test_data_run_id_is_append_only) ... ok\ntest_prompt_hash_lineage (test_lineage_foundation.TestLineageFoundation.test_prompt_hash_lineage) ... ok\ntest_prompt_run_id_is_append_only (test_lineage_foundation.TestLineageFoundation.test_prompt_run_id_is_append_only) ... ok\ntest_sensitive_snapshot_is_blocked (test_lineage_foundation.TestLineageFoundation.test_sensitive_snapshot_is_blocked) ... ok\ntest_identity_gate_is_before_autonote_and_full_pass (test_safe_commit_identity.TestSafeCommitIdentity.test_identity_gate_is_before_autonote_and_full_pass) ... ok\ntest_identity_probe_does_not_use_run_git_check_keyword (test_safe_commit_identity.TestSafeCommitIdentity.test_identity_probe_does_not_use_run_git_check_keyword) ... ok\ntest_missing_local_identity_returns_nonzero_without_crash (test_safe_commit_identity.TestSafeCommitIdentity.test_missing_local_identity_returns_nonzero_without_crash) ... ok\ntest_binding_rejects_invalid_anchor (test_source_provenance.TestSourceProvenance.test_binding_rejects_invalid_anchor) ... ok\ntest_binding_rejects_missing_source (test_source_provenance.TestSourceProvenance.test_binding_rejects_missing_source) ... ok\ntest_binding_requires_real_registered_source_and_data_run (test_source_provenance.TestSourceProvenance.test_binding_requires_real_registered_source_and_data_run) ... ok\ntest_changed_source_gets_different_identity (test_source_provenance.TestSourceProvenance.test_changed_source_gets_different_identity) ... ok\ntest_same_source_registration_is_idempotent (test_source_provenance.TestSourceProvenance.test_same_source_registration_is_idempotent) ... ok\ntest_source_registration_is_hash_bound (test_source_provenance.TestSourceProvenance.test_source_registration_is_hash_bound) ... ok\ntest_backup_is_not_claimed_as_active (test_storage_layout_contract.StorageLayoutContractTest.test_backup_is_not_claimed_as_active) ... ok\ntest_lazy_classification (test_storage_layout_contract.StorageLayoutContractTest.test_lazy_classification) ... ok\ntest_operational_roots (test_storage_layout_contract.StorageLayoutContractTest.test_operational_roots) ... ok\ntest_pilot_subdirectories (test_storage_layout_contract.StorageLayoutContractTest.test_pilot_subdirectories) ... ok\ntest_project_root (test_storage_layout_contract.StorageLayoutContractTest.test_project_root) ... ok\ntest_sourceguard_contract (test_storage_layout_contract.StorageLayoutContractTest.test_sourceguard_contract) ... ok\ntest_sourceguard_not_claimed_as_activated (test_storage_layout_contract.StorageLayoutContractTest.test_sourceguard_not_claimed_as_activated) ... ok\ntest_all_expected_paths_are_contained (test_storage_materializer.StorageMaterializerTest.test_all_expected_paths_are_contained) ... ok\ntest_exact_tree_materialization (test_storage_materializer.StorageMaterializerTest.test_exact_tree_materialization) ... ok\ntest_file_cannot_be_project_root (test_storage_materializer.StorageMaterializerTest.test_file_cannot_be_project_root) ... ok\ntest_lazy_evidence_roots_are_not_created (test_storage_materializer.StorageMaterializerTest.test_lazy_evidence_roots_are_not_created) ... ok\ntest_materialization_is_idempotent (test_storage_materializer.StorageMaterializerTest.test_materialization_is_idempotent) ... ok\ntest_missing_directory_fails_acceptance (test_storage_materializer.StorageMaterializerTest.test_missing_directory_fails_acceptance) ... ok\ntest_missing_project_root_fails_closed (test_storage_materializer.StorageMaterializerTest.test_missing_project_root_fails_closed) ... ok\ntest_unexpected_directory_fails_acceptance (test_storage_materializer.StorageMaterializerTest.test_unexpected_directory_fails_acceptance) ... ok\n\n----------------------------------------------------------------------\nRan 39 tests in 0.158s\n\nOK"
+    },
+    {
+      "gate": "ADVERSARIAL_SAFETY",
+      "status": "PASS",
+      "problems": []
+    },
+    {
+      "gate": "OPERATIONAL_ACCEPTANCE",
+      "status": "PASS",
+      "tools": [
+        {
+          "tool": "tools/autonote.py",
+          "status": "PASS"
+        },
+        {
+          "tool": "tools/safe_commit.py",
+          "status": "PASS"
+        },
+        {
+          "tool": "tools/session_logger.py",
+          "status": "PASS"
+        },
+        {
+          "tool": "tools/remote_logger.py",
+          "status": "PASS"
+        },
+        {
+          "tool": "tools/durable_evidence.py",
+          "status": "PASS"
+        },
+        {
+          "tool": "tools/full_pass.py",
+          "status": "PASS"
+        }
+      ]
+    },
+    {
+      "gate": "STAGED_SCOPE",
+      "status": "PASS",
+      "files": [
+        "NOTES.md",
+        "evidence/development_notes/DEV-20260903-065807.json",
+        "evidence/development_notes/DEV-20260903-065807.md",
+        "tests/test_durable_evidence_coverage.py",
+        "tests/test_durable_evidence_external_coverage.py",
+        "tests/test_storage_layout_contract.py",
+        "tests/test_storage_materializer.py",
+        "tools/data_logger.py",
+        "tools/durable_evidence.py",
+        "tools/prompt_logger.py",
+        "tools/provenance_binding.py",
+        "tools/remote_logger.py",
+        "tools/source_registry.py",
+        "tools/storage_layout.py",
+        "tools/storage_materializer.py"
+      ],
+      "problems": []
+    }
+  ],
+  "candidate_manifest": [
+    {
+      "path": "NOTES.md",
+      "sha256": "cb3375f3fda3284bb98bf4e72449d7d91c579e24dc48c77154676ffa7a994efc",
+      "size_bytes": 5469
+    },
+    {
+      "path": "evidence/development_notes/DEV-20260903-065807.json",
+      "sha256": "f9780c4705d1aee209d995ca8788cb5248f0087d35341f6744d4ac99af4f03d7",
+      "size_bytes": 1126
+    },
+    {
+      "path": "evidence/development_notes/DEV-20260903-065807.md",
+      "sha256": "819367f9eeefe9f8d71558bd8f8de9aac717b415dc77127a02670557872e3aff",
+      "size_bytes": 1082
+    },
+    {
+      "path": "tests/test_durable_evidence_coverage.py",
+      "sha256": "e51d725ce851e00c656399bafb3858c2b348236225ee192e4737500c05941bf1",
+      "size_bytes": 1996
+    },
+    {
+      "path": "tests/test_durable_evidence_external_coverage.py",
+      "sha256": "68233f665ffa65c2c200abf09cce6e579b471746ab88c121ee31a6881fcfaa70",
+      "size_bytes": 2375
+    },
+    {
+      "path": "tests/test_storage_layout_contract.py",
+      "sha256": "1bb30277a04e3fed8cfc4911ba17dc037f75f2d4dd7dd9cc3041352cce5f541b",
+      "size_bytes": 2686
+    },
+    {
+      "path": "tests/test_storage_materializer.py",
+      "sha256": "123f4deec2d5a1a548e2c661666c43ca76010a54d4f3402535a23c68dece74d0",
+      "size_bytes": 4808
+    },
+    {
+      "path": "tools/data_logger.py",
+      "sha256": "d005203df5d4faffb2eb10558cef8085ae65fcfde4f03c7337f4b19ecc199c97",
+      "size_bytes": 4612
+    },
+    {
+      "path": "tools/durable_evidence.py",
+      "sha256": "6e8091d5f2f4ffa3701045b96cf725ee00ebd0ed5d72f3edcc0e7770590f18a8",
+      "size_bytes": 12484
+    },
+    {
+      "path": "tools/prompt_logger.py",
+      "sha256": "182b43cbc73d06a88f87c3737f801dc0dc8a7fda11a557c4fd73c782eca7c488",
+      "size_bytes": 6483
+    },
+    {
+      "path": "tools/provenance_binding.py",
+      "sha256": "2ee7c4913813878f958713c7d5940bb582b7a7ff06d1f9b5135bc9ded6bc50e2",
+      "size_bytes": 9015
+    },
+    {
+      "path": "tools/remote_logger.py",
+      "sha256": "1da6b2d13f18f008c657b9a44699616565dc3fb969667ac92f4b8d311cff0020",
+      "size_bytes": 5441
+    },
+    {
+      "path": "tools/source_registry.py",
+      "sha256": "6482876a628e28153189ebaf494de828ae434925370bef217d70e06b154ed3d7",
+      "size_bytes": 6190
+    },
+    {
+      "path": "tools/storage_layout.py",
+      "sha256": "88aa549ad28632be0d610186f8f283fa5c7389025186c74427b100b0702b94f3",
+      "size_bytes": 5765
+    },
+    {
+      "path": "tools/storage_materializer.py",
+      "sha256": "c3ff63f70edc7eaf576b2e8a4e4540e2ab5cd94321c071c73709451e817caec8",
+      "size_bytes": 3615
+    }
+  ],
+  "credential_persisted": false,
+  "force_push_authorized": false,
+  "record_sha256": "54b55ef5a12c97ca2c9f1845c3eee8a374659b0f2fe4df4928d33046add3873b"
+}

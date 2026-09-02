@@ -7,17 +7,29 @@ import hashlib
 import json
 import shutil
 
+# ARCH-STORAGE-01: canonical storage contract
+try:
+    from tools.storage_layout import (
+        AUTOTRACE_ROOT,
+        AUTOTRACE_CHECKPOINT_ROOT,
+        AUTOTRACE_MANIFEST_ROOT,
+        SOURCEGUARD_GOVERNANCE_ROOT
+    )
+except ModuleNotFoundError:
+    from storage_layout import (
+        AUTOTRACE_ROOT,
+        AUTOTRACE_CHECKPOINT_ROOT,
+        AUTOTRACE_MANIFEST_ROOT,
+        SOURCEGUARD_GOVERNANCE_ROOT
+    )
+
+
 ROOT = Path(__file__).resolve().parents[1]
 
-DRIVE_ROOT = Path(
-    "/content/drive/MyDrive/"
-    "ExamTrust_AI_2026/"
-    "EVIDENCE/AUTOTRACE"
-)
+DRIVE_ROOT = AUTOTRACE_ROOT
 
-CHECKPOINT_ROOT = DRIVE_ROOT / "checkpoints"
-REGISTRY_ROOT = DRIVE_ROOT / "manifests"
-
+CHECKPOINT_ROOT = AUTOTRACE_CHECKPOINT_ROOT
+REGISTRY_ROOT = AUTOTRACE_MANIFEST_ROOT
 CHECKPOINT_ROOT.mkdir(
     parents=True,
     exist_ok=True
@@ -136,38 +148,129 @@ def get_git_state():
     }
 
 
-def evidence_files():
-    roots = [
+def evidence_records():
+    """
+    Return explicit checkpoint evidence-source records.
+
+    Each record preserves:
+    - physical source path;
+    - source class;
+    - original source root;
+    - original relative provenance;
+    - destination-relative checkpoint path.
+
+    Repo evidence and Drive-only external evidence are never
+    represented as the same provenance class.
+    """
+
+    repo_roots = [
         ROOT / "evidence" / "development_notes",
         ROOT / "evidence" / "full_pass",
         ROOT / "evidence" / "remote_events",
-        ROOT / "evidence" / "sessions"
+        ROOT / "evidence" / "sessions",
+        ROOT / "evidence" / "notebook_lineage"
     ]
 
-    files = []
+    records = []
 
-    for base in roots:
+    for base in repo_roots:
         if not base.exists():
             continue
 
-        for p in base.rglob("*"):
-            if p.is_file():
-                files.append(p)
+        for src in base.rglob("*"):
+            if not src.is_file():
+                continue
 
-    # Also preserve readable index and origin record.
+            rel = src.relative_to(ROOT)
+
+            records.append({
+                "src": src,
+                "checkpoint_rel": rel,
+                "source_class": "repo_evidence",
+                "source_root": str(ROOT),
+                "source_relative_path": str(rel).replace(
+                    "\\",
+                    "/"
+                )
+            })
+
+    # Preserve readable repository index/origin records.
     for name in [
         "NOTES.md",
         "PROJECT_ORIGIN.md"
     ]:
-        p = ROOT / name
-        if p.exists():
-            files.append(p)
+        src = ROOT / name
+
+        if not src.exists():
+            continue
+
+        rel = Path(src.name)
+
+        records.append({
+            "src": src,
+            "checkpoint_rel": rel,
+            "source_class": "repo_root_record",
+            "source_root": str(ROOT),
+            "source_relative_path": str(rel).replace(
+                "\\",
+                "/"
+            )
+        })
+
+    # Drive-only governance evidence is checkpointed explicitly
+    # under an external namespace. It must never masquerade as
+    # evidence originating from the Git repository.
+    external_root = SOURCEGUARD_GOVERNANCE_ROOT
+
+    if external_root.exists():
+        for src in external_root.rglob("*"):
+            if not src.is_file():
+                continue
+
+            external_rel = src.relative_to(
+                external_root
+            )
+
+            checkpoint_rel = (
+                Path("external_evidence")
+                / "sourceguard_governance"
+                / external_rel
+            )
+
+            records.append({
+                "src": src,
+                "checkpoint_rel": checkpoint_rel,
+                "source_class": "drive_external_sourceguard_governance",
+                "source_root": str(external_root),
+                "source_relative_path": str(
+                    external_rel
+                ).replace(
+                    "\\",
+                    "/"
+                )
+            })
 
     return sorted(
-        set(files),
-        key=lambda x: str(x)
+        records,
+        key=lambda item: (
+            item["source_class"],
+            str(item["checkpoint_rel"])
+        )
     )
 
+
+def evidence_files():
+    """
+    Backward-compatible source-path view.
+
+    New checkpoint code should use evidence_records() so source
+    provenance is not lost.
+    """
+
+    return [
+        item["src"]
+        for item in evidence_records()
+    ]
 
 def create_checkpoint(
     reason,
@@ -258,12 +361,10 @@ def create_checkpoint(
 
     copied = []
 
-    for src in evidence_files():
+    for evidence_record in evidence_records():
 
-        if src.parent == ROOT:
-            rel = Path(src.name)
-        else:
-            rel = src.relative_to(ROOT)
+        src = evidence_record["src"]
+        rel = evidence_record["checkpoint_rel"]
 
         dst = target / rel
 
@@ -283,7 +384,16 @@ def create_checkpoint(
                 "/"
             ),
             "size_bytes": dst.stat().st_size,
-            "sha256": sha256_file(dst)
+            "sha256": sha256_file(dst),
+            "source_class": evidence_record[
+                "source_class"
+            ],
+            "source_root": evidence_record[
+                "source_root"
+            ],
+            "source_relative_path": evidence_record[
+                "source_relative_path"
+            ]
         })
 
     # --------------------------------------------------------
