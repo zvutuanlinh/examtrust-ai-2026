@@ -1,0 +1,10 @@
+{
+  "session_id": "SESSION-20260902-180723",
+  "started_at": "2026-09-02T18:07:23+07:00",
+  "start_head": "1edb7e028d4c166d538a1f63106e6bd8bdcec9a4",
+  "status": "CLOSED_BY_COMMIT",
+  "ended_at": "2026-09-02T18:07:24+07:00",
+  "pre_close_head": "1edb7e028d4c166d538a1f63106e6bd8bdcec9a4",
+  "commits_before_close": [],
+  "closure_method": "safe_commit"
+}
