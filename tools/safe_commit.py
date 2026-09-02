@@ -192,6 +192,127 @@ def syntax_check(files):
     return len(errors) == 0, errors
 
 
+
+def rebuild_notes_index():
+    """
+    Rebuild root NOTES.md from canonical development note JSON records.
+
+    NOTES.md is a readable index only.
+    Canonical detailed evidence remains append-oriented under:
+    evidence/development_notes/
+    """
+    notes_dir = (
+        ROOT
+        / "evidence"
+        / "development_notes"
+    )
+
+    records = []
+
+    if notes_dir.exists():
+        for path in sorted(
+            notes_dir.glob("DEV-*.json")
+        ):
+            try:
+                rec = json.loads(
+                    path.read_text(
+                        encoding="utf-8"
+                    )
+                )
+            except Exception:
+                continue
+
+            if "note_id" not in rec:
+                continue
+
+            records.append({
+                "timestamp": rec.get(
+                    "timestamp",
+                    ""
+                ),
+                "status": rec.get(
+                    "status",
+                    ""
+                ),
+                "note_id": rec.get(
+                    "note_id",
+                    path.stem
+                ),
+                "goal": rec.get(
+                    "goal",
+                    ""
+                )
+            })
+
+    lines = [
+        "# ExamTrust AI — Development Notes",
+        "",
+        "> Human-readable index generated from canonical AutoTrace evidence.",
+        "> Detailed records remain in `evidence/development_notes/`.",
+        "",
+        "## Integrity rules",
+        "",
+        "- No backdated history.",
+        "- No fabricated commits, Prompt Logs, benchmark results or demo evidence.",
+        "- Failed/aborted transactions are preserved rather than deleted.",
+        "- `NOTES.md` is a readable index; JSON/Markdown files under `evidence/` are the detailed evidence.",
+        "",
+        "## Development history",
+        "",
+        "| Time | Status | Note ID | Goal |",
+        "|---|---|---|---|"
+    ]
+
+    for rec in records:
+        ts = str(
+            rec["timestamp"]
+        ).replace("|", "\\|")
+
+        status = str(
+            rec["status"]
+        ).replace("|", "\\|")
+
+        note_id = str(
+            rec["note_id"]
+        ).replace("|", "\\|")
+
+        goal = str(
+            rec["goal"]
+        ).replace("|", "\\|")
+
+        lines.append(
+            f"| {ts} | {status} | "
+            f"`{note_id}` | {goal} |"
+        )
+
+    lines += [
+        "",
+        "## Reading the evidence",
+        "",
+        "Detailed development evidence:",
+        "",
+        "```text",
+        "evidence/development_notes/",
+        "```",
+        "",
+        "Remote publication evidence:",
+        "",
+        "```text",
+        "evidence/remote_events/",
+        "```",
+        ""
+    ]
+
+    notes_path = ROOT / "NOTES.md"
+
+    notes_path.write_text(
+        "\n".join(lines),
+        encoding="utf-8"
+    )
+
+    return notes_path
+
+
 def safe_commit(goal, message):
     files_before = changed_files()
 
@@ -261,6 +382,11 @@ def safe_commit(goal, message):
             "commit_message": message
         }
     )
+
+    # Refresh the human-readable history index
+    # before staging so NOTES.md belongs to
+    # the same evidence transaction.
+    rebuild_notes_index()
 
     files_after_note = changed_files()
 
