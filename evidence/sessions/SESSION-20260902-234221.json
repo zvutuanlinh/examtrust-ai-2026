@@ -1,0 +1,15 @@
+{
+  "session_id": "SESSION-20260902-234221",
+  "started_at": "2026-09-02T23:42:21+07:00",
+  "start_head": "260801c764cdbc19191be03dda081ad42ea042e3",
+  "status": "CLOSED_BY_COMMIT",
+  "ended_at": "2026-09-02T23:53:33+07:00",
+  "pre_close_head": "90dd622cc011b553bba8e6f0b4b3ff4825372fe0",
+  "commits_before_close": [
+    {
+      "sha": "90dd622cc011b553bba8e6f0b4b3ff4825372fe0",
+      "message": "fix(git): add identity preflight before commit gates"
+    }
+  ],
+  "closure_method": "safe_commit"
+}

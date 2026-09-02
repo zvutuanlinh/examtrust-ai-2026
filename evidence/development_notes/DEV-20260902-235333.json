@@ -1,0 +1,15 @@
+{
+  "note_id": "DEV-20260902-235333",
+  "timestamp": "2026-09-02T23:53:33+07:00",
+  "goal": "Close development session SESSION-20260902-234221 with session evidence",
+  "git_head_before": "90dd622cc011b553bba8e6f0b4b3ff4825372fe0",
+  "changed_files": [
+    "evidence/sessions/SESSION-20260902-234221.json"
+  ],
+  "status": "PRE_COMMIT",
+  "extra": {
+    "commit_message": "chore(session): close development session",
+    "full_pass_required": true
+  },
+  "record_sha256": "bdd8283c404954ed4c2c8ece5cfd2555796c5103e9a584d77a8d491863b58c0d"
+}
