@@ -1,0 +1,8 @@
+{
+  "timestamp": "2026-09-02T17:27:20+07:00",
+  "event": "TRANSACTION_ABORTED",
+  "related_note": "DEV-20260902-172611",
+  "reason": "safe_commit changed-file parser incorrectly produced 'ools/autonote.py' instead of 'tools/autonote.py'; git add therefore failed before commit.",
+  "git_commit_created": false,
+  "history_action": "Preserve failed PRE_COMMIT evidence; patch parser; retry as a new transaction."
+}

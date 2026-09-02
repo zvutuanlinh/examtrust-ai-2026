@@ -1,5 +1,6 @@
 from pathlib import Path
 from datetime import datetime
+from zoneinfo import ZoneInfo
 import json
 import hashlib
 import subprocess
@@ -10,7 +11,7 @@ NOTE_DIR.mkdir(parents=True, exist_ok=True)
 
 
 def now():
-    return datetime.now().astimezone()
+    return datetime.now(ZoneInfo("Asia/Ho_Chi_Minh"))
 
 
 def run_git(args):
