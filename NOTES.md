@@ -34,6 +34,7 @@
 | 2026-09-02T18:07:24+07:00 | PRE_COMMIT | `DEV-20260902-180724` | Close development session SESSION-20260902-180723 with session evidence |
 | 2026-09-02T18:35:36+07:00 | PRE_COMMIT | `DEV-20260902-183536` | Build DATA-PROV-01 data and prompt lineage foundation with append-only Run IDs, SHA256 manifests and credential-safe evidence |
 | 2026-09-02T18:35:45+07:00 | PRE_COMMIT | `DEV-20260902-183545` | Close development session SESSION-20260902-182948 with session evidence |
+| 2026-09-02T18:41:04+07:00 | PRE_COMMIT | `DEV-20260902-184104` | Complete DATA-PROV-01 Source Registry and Provenance Binding with immutable source identity, SHA256-bound source registration, precise anchors and end-to-end lineage links |
 
 ## Detailed evidence
 

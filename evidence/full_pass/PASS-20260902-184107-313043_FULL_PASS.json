@@ -1,0 +1,111 @@
+{
+  "pass_id": "PASS-20260902-184107-313043",
+  "timestamp": "2026-09-02T18:41:07+07:00",
+  "goal": "Complete DATA-PROV-01 Source Registry and Provenance Binding with immutable source identity, SHA256-bound source registration, precise anchors and end-to-end lineage links",
+  "commit_message": "feat(provenance): add source registry and provenance binding",
+  "parent_head": "8a1bce40edf6956f050054b2fa8a4c5914f48fe9",
+  "status": "FULL_PASS",
+  "gates": [
+    {
+      "gate": "SYNTAX",
+      "status": "PASS",
+      "checked_files": 14,
+      "errors": []
+    },
+    {
+      "gate": "UNIT_REGRESSION",
+      "status": "PASS",
+      "stdout": "DATA_RUN_CREATED\nRun ID: ETDATA-TEST-001\nPath: /tmp/tmp1zjtvjq8/evidence/ETDATA-TEST-001\nInput count: 1\nOutput count: 0\nManifest SHA256: b44ade8dd948a992674279dd257cf8aaac83e057bb2fcad900dfb3894dc7501b\nSHA256SUMS SHA256: e166302c4b2f39544447743fd6729cdca0a5c91115a79bcbd95de61fd8d83ab7\nDATA_RUN_CREATED\nRun ID: ETDATA-TEST-002\nPath: /tmp/tmp1ivpj6zl/evidence/ETDATA-TEST-002\nInput count: 1\nOutput count: 0\nManifest SHA256: afa81bb73d933adcb4277da8e3a48ff324ecbcf05f6347f6aaa1d8acc5874718\nSHA256SUMS SHA256: 6cc8083f04b1a1f6a9ee66445dd03242ad2620f28e826b4ab260b6b8b37891b4\nPROMPT_RUN_CREATED\nRun ID: ETPROMPT-TEST-001\nPath: /tmp/tmp0r2pf8gi/evidence/ETPROMPT-TEST-001\nContract: QC-TEST-001\nPrompt SHA256: 43f985d62940dc25c6fe72045242ce88cb3385a3b09c20a5cfd931b66ec51c17\nResponse SHA256: 39a28d910761d73ae8efc307a7366dcc8ec20e405a564223e794ca4e4a1bfb55\nSnapshot stored: True\nManifest SHA256: 9ddad56dd69c8c2d8f4c21e5d7da68f9354ee6e4d787d1f4a0cae2a3e9c78393\nSHA256SUMS SHA256: d4586b62b26dedbe1584f54d9738684b6fa935ab842980b366bbcb20f415db0e\nPROMPT_RUN_CREATED\nRun ID: ETPROMPT-TEST-002\nPath: /tmp/tmp_9m8faam/evidence/ETPROMPT-TEST-002\nContract: QC-001\nPrompt SHA256: f16d05ec6b29248d2c61adb1e9263f78e4f7bace1b955014a2d17872cfe4064d\nResponse SHA256: None\nSnapshot stored: False\nManifest SHA256: 96e51e68f53bc4a604cab4bc3401e7eb1a01410d05ebf6da00f4553d35027486\nSHA256SUMS SHA256: 3ef63fe00c6ad41afca77954fa64752316e428a8dcf48012b2a46ffd13710fcd\nSOURCE_REGISTERED\nSource ID: SRC-F16D05EC6B29248D\nSHA256: f16d05ec6b29248d2c61adb1e9263f78e4f7bace1b955014a2d17872cfe4064d\nRaw content copied: NO\nSource mutated: NO\nDATA_RUN_CREATED\nRun ID: ETDATA-TEST-BIND-003\nPath: /tmp/tmp6fl0wouq/data_runs/ETDATA-TEST-BIND-003\nInput count: 1\nOutput count: 0\nManifest SHA256: 2172c62afbb8fbaaf8062c17bdc17a63b86eebecfe9c312c518cd421000b3964\nSHA256SUMS SHA256: b90ccff8cb9255b0ce58263937883e973fd7a22fbdc9f8d3efcd63315168bd4c\nDATA_RUN_CREATED\nRun ID: ETDATA-TEST-BIND-002\nPath: /tmp/tmp4lcow_gj/data_runs/ETDATA-TEST-BIND-002\nInput count: 1\nOutput count: 0\nManifest SHA256: 9032e5eb8522368c2554da021ef1795522be8edf8a5bf955f1835bfd6511a72d\nSHA256SUMS SHA256: bf873e330729c418ee44c24425aef5fccd9ed82e3ab08424a7b0bb1230a68ce0\nSOURCE_REGISTERED\nSource ID: SRC-C3841ACACE2CFAAB\nSHA256: c3841acace2cfaab7124198973212ea3d995c5592c91de654fc5543ef9ee768d\nRaw content copied: NO\nSource mutated: NO\nDATA_RUN_CREATED\nRun ID: ETDATA-TEST-BIND-001\nPath: /tmp/tmps4u8_u6i/data_runs/ETDATA-TEST-BIND-001\nInput count: 1\nOutput count: 0\nManifest SHA256: ed02d8cd3a0ed942f4c9edfeaa16720e86ff76f4f418bce09ee3b23fdcb140e4\nSHA256SUMS SHA256: 46c5a3d2e3a1a5514b83a65ab2f7310f548d123cddbf22de13fa3b1bc431e1e2\nPROVENANCE_BINDING_CREATED\nBinding ID: ETBIND-TEST-001\nSource ID: SRC-C3841ACACE2CFAAB\nData Run: ETDATA-TEST-BIND-001\nAsset ID: CH_001\nContract ID: QC-TEST-001\nPrompt Run: ETPROMPT-TEST-001\nQuestion ID: Q-TEST-001\nSOURCE_REGISTERED\nSource ID: SRC-559AEAD08264D579\nSHA256: 559aead08264d5795d3909718cdd05abd49572e84fe55590eef31a88a08fdffd\nRaw content copied: NO\nSource mutated: NO\nSOURCE_REGISTERED\nSource ID: SRC-DF7E70E5021544F4\nSHA256: df7e70e5021544f4834bbee64a9e3789febc4be81470df629cad6ddb03320a5c\nRaw content copied: NO\nSource mutated: NO\nSOURCE_REGISTERED\nSource ID: SRC-4343D14AF5D0DF58\nSHA256: 4343d14af5d0df58895df410237461f6f143112ba856709e1a497e6500e22a2c\nRaw content copied: NO\nSource mutated: NO\nSOURCE_ALREADY_REGISTERED\nSource ID: SRC-4343D14AF5D0DF58\nSOURCE_REGISTERED\nSource ID: SRC-A7DD97BC10922AE2\nSHA256: a7dd97bc10922ae22e523fd8af298c7e50c64c15643b9dee58475208c718fecf\nRaw content copied: NO\nSource mutated: NO",
+      "stderr": "test_autotrace_runtime_is_ignored (test_git_foundation.TestGitFoundation.test_autotrace_runtime_is_ignored) ... ok\ntest_sha256_detects_change (test_git_foundation.TestGitFoundation.test_sha256_detects_change) ... ok\ntest_sha256_is_stable (test_git_foundation.TestGitFoundation.test_sha256_is_stable) ... ok\ntest_data_logger_does_not_modify_source (test_lineage_foundation.TestLineageFoundation.test_data_logger_does_not_modify_source) ... ok\ntest_data_run_id_is_append_only (test_lineage_foundation.TestLineageFoundation.test_data_run_id_is_append_only) ... ok\ntest_prompt_hash_lineage (test_lineage_foundation.TestLineageFoundation.test_prompt_hash_lineage) ... ok\ntest_prompt_run_id_is_append_only (test_lineage_foundation.TestLineageFoundation.test_prompt_run_id_is_append_only) ... ok\ntest_sensitive_snapshot_is_blocked (test_lineage_foundation.TestLineageFoundation.test_sensitive_snapshot_is_blocked) ... ok\ntest_binding_rejects_invalid_anchor (test_source_provenance.TestSourceProvenance.test_binding_rejects_invalid_anchor) ... ok\ntest_binding_rejects_missing_source (test_source_provenance.TestSourceProvenance.test_binding_rejects_missing_source) ... ok\ntest_binding_requires_real_registered_source_and_data_run (test_source_provenance.TestSourceProvenance.test_binding_requires_real_registered_source_and_data_run) ... ok\ntest_changed_source_gets_different_identity (test_source_provenance.TestSourceProvenance.test_changed_source_gets_different_identity) ... ok\ntest_same_source_registration_is_idempotent (test_source_provenance.TestSourceProvenance.test_same_source_registration_is_idempotent) ... ok\ntest_source_registration_is_hash_bound (test_source_provenance.TestSourceProvenance.test_source_registration_is_hash_bound) ... ok\n\n----------------------------------------------------------------------\nRan 14 tests in 0.025s\n\nOK"
+    },
+    {
+      "gate": "ADVERSARIAL_SAFETY",
+      "status": "PASS",
+      "problems": []
+    },
+    {
+      "gate": "OPERATIONAL_ACCEPTANCE",
+      "status": "PASS",
+      "tools": [
+        {
+          "tool": "tools/autonote.py",
+          "status": "PASS"
+        },
+        {
+          "tool": "tools/safe_commit.py",
+          "status": "PASS"
+        },
+        {
+          "tool": "tools/session_logger.py",
+          "status": "PASS"
+        },
+        {
+          "tool": "tools/remote_logger.py",
+          "status": "PASS"
+        },
+        {
+          "tool": "tools/durable_evidence.py",
+          "status": "PASS"
+        },
+        {
+          "tool": "tools/full_pass.py",
+          "status": "PASS"
+        }
+      ]
+    },
+    {
+      "gate": "STAGED_SCOPE",
+      "status": "PASS",
+      "files": [
+        "NOTES.md",
+        "docs/SOURCE_PROVENANCE_SCHEMA.md",
+        "evidence/development_notes/DEV-20260902-184104.json",
+        "evidence/development_notes/DEV-20260902-184104.md",
+        "tests/test_source_provenance.py",
+        "tools/provenance_binding.py",
+        "tools/source_registry.py"
+      ],
+      "problems": []
+    }
+  ],
+  "candidate_manifest": [
+    {
+      "path": "NOTES.md",
+      "sha256": "5a003e0cad5be6bcbe64d5dfb3a5688ff4e0867dfaa7ebcac10e2cc8bdf81f47",
+      "size_bytes": 3716
+    },
+    {
+      "path": "docs/SOURCE_PROVENANCE_SCHEMA.md",
+      "sha256": "41521fdea1ed989c7a6877c92e122518ecd2bf9c74e5868eb395246909aaff52",
+      "size_bytes": 1674
+    },
+    {
+      "path": "evidence/development_notes/DEV-20260902-184104.json",
+      "sha256": "40508b423e2352ac1e898689f520361d620418657406544f168638772559e3e1",
+      "size_bytes": 751
+    },
+    {
+      "path": "evidence/development_notes/DEV-20260902-184104.md",
+      "sha256": "33bdf64cd733d7dcc33364e0735baf3e6413bdbf40331acf8cf887c2ea5c9fac",
+      "size_bytes": 747
+    },
+    {
+      "path": "tests/test_source_provenance.py",
+      "sha256": "3ecd7a682b046fe08fa484e541b235732b7ece369a13d82ae4d060ef4b272e18",
+      "size_bytes": 7309
+    },
+    {
+      "path": "tools/provenance_binding.py",
+      "sha256": "56fcda695bf1c866be77f61aa865739008acb0ced793273f89c01e572afcbc67",
+      "size_bytes": 8911
+    },
+    {
+      "path": "tools/source_registry.py",
+      "sha256": "7d0bc8970bfaee42b52d3762088bc68fec0b8851ff596c320d360c4736d9c069",
+      "size_bytes": 6056
+    }
+  ],
+  "credential_persisted": false,
+  "force_push_authorized": false,
+  "record_sha256": "29260118b5f4c4cdf72367eb892cad51357af697e3d0c1deb8e152271bd38a86"
+}

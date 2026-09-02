@@ -1,0 +1,18 @@
+{
+  "note_id": "DEV-20260902-184104",
+  "timestamp": "2026-09-02T18:41:04+07:00",
+  "goal": "Complete DATA-PROV-01 Source Registry and Provenance Binding with immutable source identity, SHA256-bound source registration, precise anchors and end-to-end lineage links",
+  "git_head_before": "8a1bce40edf6956f050054b2fa8a4c5914f48fe9",
+  "changed_files": [
+    "docs/SOURCE_PROVENANCE_SCHEMA.md",
+    "tests/test_source_provenance.py",
+    "tools/provenance_binding.py",
+    "tools/source_registry.py"
+  ],
+  "status": "PRE_COMMIT",
+  "extra": {
+    "commit_message": "feat(provenance): add source registry and provenance binding",
+    "full_pass_required": true
+  },
+  "record_sha256": "8b0f386dc1f9870493f22ac259d5a816c2d8ac339f9dce024b7a5101f7b0979d"
+}
