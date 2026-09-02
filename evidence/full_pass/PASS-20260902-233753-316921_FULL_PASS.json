@@ -1,0 +1,99 @@
+{
+  "pass_id": "PASS-20260902-233753-316921",
+  "timestamp": "2026-09-02T23:37:53+07:00",
+  "goal": "Correct durable evidence coverage after observed Drive-loss incident by including tracked FULL PASS records in every durable checkpoint and adding regression protection",
+  "commit_message": "fix(evidence): include full pass records in durable checkpoints",
+  "parent_head": "15551953141fbf2ca695955a865b97053cdd5fad",
+  "status": "FULL_PASS",
+  "gates": [
+    {
+      "gate": "SYNTAX",
+      "status": "PASS",
+      "checked_files": 15,
+      "errors": []
+    },
+    {
+      "gate": "UNIT_REGRESSION",
+      "status": "PASS",
+      "stdout": "DATA_RUN_CREATED\nRun ID: ETDATA-TEST-001\nPath: /tmp/tmpwfysm1sh/evidence/ETDATA-TEST-001\nInput count: 1\nOutput count: 0\nManifest SHA256: ee47dc694bfd8b62f21a651a07a21eba61c4df346d79dca0d8f2750ba1e54e0f\nSHA256SUMS SHA256: b4d166457a33d8812219fc1a70fb4b14437aefe2199188a52b68b303818fe895\nDATA_RUN_CREATED\nRun ID: ETDATA-TEST-002\nPath: /tmp/tmprgsdsnu3/evidence/ETDATA-TEST-002\nInput count: 1\nOutput count: 0\nManifest SHA256: a6ebe001f4670f48c09ff1b0f53e1943eea980f0ef0dee42fe5962544b5708fb\nSHA256SUMS SHA256: 0c02975416e2f1f63827e84612f79fb9f903a507d97e43e5af400bb6fc952eb5\nPROMPT_RUN_CREATED\nRun ID: ETPROMPT-TEST-001\nPath: /tmp/tmptp34wtu6/evidence/ETPROMPT-TEST-001\nContract: QC-TEST-001\nPrompt SHA256: 43f985d62940dc25c6fe72045242ce88cb3385a3b09c20a5cfd931b66ec51c17\nResponse SHA256: 39a28d910761d73ae8efc307a7366dcc8ec20e405a564223e794ca4e4a1bfb55\nSnapshot stored: True\nManifest SHA256: 2e7484fb17ccb0d812683081460ec1f03266251cf34e1f8bad0fd42b2c24bfab\nSHA256SUMS SHA256: 625a18727d2fde1a831663634dae4d3bc9f41fe8a6ca41bef537fefe3b47c897\nPROMPT_RUN_CREATED\nRun ID: ETPROMPT-TEST-002\nPath: /tmp/tmpt_x72f93/evidence/ETPROMPT-TEST-002\nContract: QC-001\nPrompt SHA256: f16d05ec6b29248d2c61adb1e9263f78e4f7bace1b955014a2d17872cfe4064d\nResponse SHA256: None\nSnapshot stored: False\nManifest SHA256: 6c25ee39c45f7370c2fb99c5c0862fc73996a6b9cdd2777aceb040ac27bef10c\nSHA256SUMS SHA256: db607b95a0698c0184b683973f2476044cc6517a5d4cbff73237bfc6e1c923f6\nSOURCE_REGISTERED\nSource ID: SRC-F16D05EC6B29248D\nSHA256: f16d05ec6b29248d2c61adb1e9263f78e4f7bace1b955014a2d17872cfe4064d\nRaw content copied: NO\nSource mutated: NO\nDATA_RUN_CREATED\nRun ID: ETDATA-TEST-BIND-003\nPath: /tmp/tmpuvttca4k/data_runs/ETDATA-TEST-BIND-003\nInput count: 1\nOutput count: 0\nManifest SHA256: 82a53cec7343910ec4fcb7a1058dbafff17e25d3fa34d657be96c3b57ef57fd4\nSHA256SUMS SHA256: 30457d245a8db193f535cb7014b9255ee58835f625320bd5ce703776d8e463bf\nDATA_RUN_CREATED\nRun ID: ETDATA-TEST-BIND-002\nPath: /tmp/tmpmbtibliw/data_runs/ETDATA-TEST-BIND-002\nInput count: 1\nOutput count: 0\nManifest SHA256: efab5032de6dc8b19be8b2b088bd9fd3a9714b00ebec878bdb11340dac74ddc7\nSHA256SUMS SHA256: f43c7ab3f96626ed7da26e9f7aa7f2ec7c77c550cd4651d9acee8c9bbe28a39d\nSOURCE_REGISTERED\nSource ID: SRC-C3841ACACE2CFAAB\nSHA256: c3841acace2cfaab7124198973212ea3d995c5592c91de654fc5543ef9ee768d\nRaw content copied: NO\nSource mutated: NO\nDATA_RUN_CREATED\nRun ID: ETDATA-TEST-BIND-001\nPath: /tmp/tmpfdbw73rr/data_runs/ETDATA-TEST-BIND-001\nInput count: 1\nOutput count: 0\nManifest SHA256: 733362763c015f8531395f978acdd1b3cd54d17ad7fd47fc08d7d30953361bed\nSHA256SUMS SHA256: 36481066f57a39ee9cd894c433d0e0fe23bf11a045f9f2b082792b6736c4cb5a\nPROVENANCE_BINDING_CREATED\nBinding ID: ETBIND-TEST-001\nSource ID: SRC-C3841ACACE2CFAAB\nData Run: ETDATA-TEST-BIND-001\nAsset ID: CH_001\nContract ID: QC-TEST-001\nPrompt Run: ETPROMPT-TEST-001\nQuestion ID: Q-TEST-001\nSOURCE_REGISTERED\nSource ID: SRC-559AEAD08264D579\nSHA256: 559aead08264d5795d3909718cdd05abd49572e84fe55590eef31a88a08fdffd\nRaw content copied: NO\nSource mutated: NO\nSOURCE_REGISTERED\nSource ID: SRC-DF7E70E5021544F4\nSHA256: df7e70e5021544f4834bbee64a9e3789febc4be81470df629cad6ddb03320a5c\nRaw content copied: NO\nSource mutated: NO\nSOURCE_REGISTERED\nSource ID: SRC-4343D14AF5D0DF58\nSHA256: 4343d14af5d0df58895df410237461f6f143112ba856709e1a497e6500e22a2c\nRaw content copied: NO\nSource mutated: NO\nSOURCE_ALREADY_REGISTERED\nSource ID: SRC-4343D14AF5D0DF58\nSOURCE_REGISTERED\nSource ID: SRC-A7DD97BC10922AE2\nSHA256: a7dd97bc10922ae22e523fd8af298c7e50c64c15643b9dee58475208c718fecf\nRaw content copied: NO\nSource mutated: NO",
+      "stderr": "test_evidence_files_includes_full_pass (test_durable_evidence_coverage.TestDurableEvidenceCoverage.test_evidence_files_includes_full_pass) ... ok\ntest_autotrace_runtime_is_ignored (test_git_foundation.TestGitFoundation.test_autotrace_runtime_is_ignored) ... ok\ntest_sha256_detects_change (test_git_foundation.TestGitFoundation.test_sha256_detects_change) ... ok\ntest_sha256_is_stable (test_git_foundation.TestGitFoundation.test_sha256_is_stable) ... ok\ntest_data_logger_does_not_modify_source (test_lineage_foundation.TestLineageFoundation.test_data_logger_does_not_modify_source) ... ok\ntest_data_run_id_is_append_only (test_lineage_foundation.TestLineageFoundation.test_data_run_id_is_append_only) ... ok\ntest_prompt_hash_lineage (test_lineage_foundation.TestLineageFoundation.test_prompt_hash_lineage) ... ok\ntest_prompt_run_id_is_append_only (test_lineage_foundation.TestLineageFoundation.test_prompt_run_id_is_append_only) ... ok\ntest_sensitive_snapshot_is_blocked (test_lineage_foundation.TestLineageFoundation.test_sensitive_snapshot_is_blocked) ... ok\ntest_binding_rejects_invalid_anchor (test_source_provenance.TestSourceProvenance.test_binding_rejects_invalid_anchor) ... ok\ntest_binding_rejects_missing_source (test_source_provenance.TestSourceProvenance.test_binding_rejects_missing_source) ... ok\ntest_binding_requires_real_registered_source_and_data_run (test_source_provenance.TestSourceProvenance.test_binding_requires_real_registered_source_and_data_run) ... ok\ntest_changed_source_gets_different_identity (test_source_provenance.TestSourceProvenance.test_changed_source_gets_different_identity) ... ok\ntest_same_source_registration_is_idempotent (test_source_provenance.TestSourceProvenance.test_same_source_registration_is_idempotent) ... ok\ntest_source_registration_is_hash_bound (test_source_provenance.TestSourceProvenance.test_source_registration_is_hash_bound) ... ok\n\n----------------------------------------------------------------------\nRan 15 tests in 0.042s\n\nOK"
+    },
+    {
+      "gate": "ADVERSARIAL_SAFETY",
+      "status": "PASS",
+      "problems": []
+    },
+    {
+      "gate": "OPERATIONAL_ACCEPTANCE",
+      "status": "PASS",
+      "tools": [
+        {
+          "tool": "tools/autonote.py",
+          "status": "PASS"
+        },
+        {
+          "tool": "tools/safe_commit.py",
+          "status": "PASS"
+        },
+        {
+          "tool": "tools/session_logger.py",
+          "status": "PASS"
+        },
+        {
+          "tool": "tools/remote_logger.py",
+          "status": "PASS"
+        },
+        {
+          "tool": "tools/durable_evidence.py",
+          "status": "PASS"
+        },
+        {
+          "tool": "tools/full_pass.py",
+          "status": "PASS"
+        }
+      ]
+    },
+    {
+      "gate": "STAGED_SCOPE",
+      "status": "PASS",
+      "files": [
+        "NOTES.md",
+        "evidence/development_notes/DEV-20260902-233751.json",
+        "evidence/development_notes/DEV-20260902-233751.md",
+        "tests/test_durable_evidence_coverage.py",
+        "tools/durable_evidence.py"
+      ],
+      "problems": []
+    }
+  ],
+  "candidate_manifest": [
+    {
+      "path": "NOTES.md",
+      "sha256": "874fde7309ef166409aece4c00ae3d25004ff6fdf4850e7f452f1982ff82e7e4",
+      "size_bytes": 4095
+    },
+    {
+      "path": "evidence/development_notes/DEV-20260902-233751.json",
+      "sha256": "1d2d214a02e385967ace50043a06daa72405bb6191fbe1caa9af94a737e3e811",
+      "size_bytes": 684
+    },
+    {
+      "path": "evidence/development_notes/DEV-20260902-233751.md",
+      "sha256": "acd63c35fc7ee3191a00b04c1a0cba7cad163a9aa562570fc9bac774dfcc4bd0",
+      "size_bytes": 690
+    },
+    {
+      "path": "tests/test_durable_evidence_coverage.py",
+      "sha256": "88848c092c6b657c70e225fe5c15aacd897ba89ed64b3395fa67f10876f852d5",
+      "size_bytes": 1028
+    },
+    {
+      "path": "tools/durable_evidence.py",
+      "sha256": "82654fcecd6dab3481358d3531cb273a7dd130850d60aef51c786010605c134c",
+      "size_bytes": 9379
+    }
+  ],
+  "credential_persisted": false,
+  "force_push_authorized": false,
+  "record_sha256": "ed40b3286d8d96664c2cb09ef1c0005c4f8ce936b5a496eb0bd1462cc05c15be"
+}

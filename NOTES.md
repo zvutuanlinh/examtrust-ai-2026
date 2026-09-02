@@ -36,6 +36,8 @@
 | 2026-09-02T18:35:45+07:00 | PRE_COMMIT | `DEV-20260902-183545` | Close development session SESSION-20260902-182948 with session evidence |
 | 2026-09-02T18:41:04+07:00 | PRE_COMMIT | `DEV-20260902-184104` | Complete DATA-PROV-01 Source Registry and Provenance Binding with immutable source identity, SHA256-bound source registration, precise anchors and end-to-end lineage links |
 | 2026-09-02T18:41:11+07:00 | PRE_COMMIT | `DEV-20260902-184111` | Close development session SESSION-20260902-184103 with session evidence |
+| 2026-09-02T23:37:51+07:00 | PRE_COMMIT | `DEV-20260902-233751` | Correct durable evidence coverage after observed Drive-loss incident by including tracked FULL PASS records in every durable checkpoint and adding regression protection |
+| 2026-09-02T23:39:26+07:00 | PRE_COMMIT | `DEV-20260902-233926` | Correct durable evidence coverage after observed Drive-loss incident by including tracked FULL PASS records in every durable checkpoint and adding regression protection |
 
 ## Detailed evidence
 

@@ -139,6 +139,7 @@ def get_git_state():
 def evidence_files():
     roots = [
         ROOT / "evidence" / "development_notes",
+        ROOT / "evidence" / "full_pass",
         ROOT / "evidence" / "remote_events",
         ROOT / "evidence" / "sessions"
     ]
