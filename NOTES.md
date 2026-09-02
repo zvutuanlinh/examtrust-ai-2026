@@ -39,6 +39,7 @@
 | 2026-09-02T23:37:51+07:00 | PRE_COMMIT | `DEV-20260902-233751` | Correct durable evidence coverage after observed Drive-loss incident by including tracked FULL PASS records in every durable checkpoint and adding regression protection |
 | 2026-09-02T23:39:26+07:00 | PRE_COMMIT | `DEV-20260902-233926` | Correct durable evidence coverage after observed Drive-loss incident by including tracked FULL PASS records in every durable checkpoint and adding regression protection |
 | 2026-09-02T23:39:31+07:00 | PRE_COMMIT | `DEV-20260902-233931` | Close development session SESSION-20260902-233751 with session evidence |
+| 2026-09-02T23:53:28+07:00 | PRE_COMMIT | `DEV-20260902-235328` | Prevent recurrence of observed Git identity failure by enforcing repository-local user.name and user.email preflight before AutoNote, FULL PASS and commit execution; correct identity probe implementation after observed run_git interface failure |
 
 ## Detailed evidence
 

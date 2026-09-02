@@ -1,0 +1,16 @@
+{
+  "note_id": "DEV-20260902-235328",
+  "timestamp": "2026-09-02T23:53:28+07:00",
+  "goal": "Prevent recurrence of observed Git identity failure by enforcing repository-local user.name and user.email preflight before AutoNote, FULL PASS and commit execution; correct identity probe implementation after observed run_git interface failure",
+  "git_head_before": "260801c764cdbc19191be03dda081ad42ea042e3",
+  "changed_files": [
+    "ools/safe_commit.py",
+    "tests/test_safe_commit_identity.py"
+  ],
+  "status": "PRE_COMMIT",
+  "extra": {
+    "commit_message": "fix(git): add identity preflight before commit gates",
+    "full_pass_required": true
+  },
+  "record_sha256": "081c01add4ab39770bfd6751e538140e6e509c702ed5a38e907df9f14f373ad2"
+}

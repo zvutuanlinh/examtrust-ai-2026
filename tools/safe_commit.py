@@ -232,7 +232,72 @@ def rebuild_notes_index():
     )
 
 
+
+
+def git_identity_preflight():
+    def local_config_get(key):
+        result = subprocess.run(
+            ['git', 'config', '--local', '--get', key],
+            cwd=ROOT,
+            text=True,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE
+        )
+
+        if result.returncode not in (0, 1):
+            print(
+                'GIT IDENTITY PREFLIGHT ERROR:',
+                key,
+                result.stderr.strip()
+            )
+            return None
+
+        return result.stdout.strip()
+
+    name = local_config_get('user.name')
+    email = local_config_get('user.email')
+
+    problems = []
+
+    if name is None:
+        problems.append(
+            'Unable to inspect Git user.name'
+        )
+    elif not name:
+        problems.append(
+            'Git user.name is missing'
+        )
+
+    if email is None:
+        problems.append(
+            'Unable to inspect Git user.email'
+        )
+    elif not email:
+        problems.append(
+            'Git user.email is missing'
+        )
+
+    if problems:
+        print('GIT IDENTITY PREFLIGHT BLOCK')
+
+        for problem in problems:
+            print(' -', problem)
+
+        return False, problems
+
+    print('GIT IDENTITY PREFLIGHT: PASS')
+    print('Git user.name:', name)
+    print('Git user.email:', email)
+
+    return True, []
+
 def safe_commit(goal, message):
+    identity_ok, identity_problems = git_identity_preflight()
+
+    if not identity_ok:
+        print('COMMIT BLOCKED: GIT IDENTITY PREFLIGHT FAILED')
+        return 1
+
     files = changed_files()
 
     if not files:
